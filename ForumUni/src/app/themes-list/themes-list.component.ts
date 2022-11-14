@@ -10,6 +10,7 @@ import { ITheme } from '../interfaces/theme';
 export class ThemesListComponent implements OnInit {
 
   themeList: ITheme[] | null = null;
+  errorFetchingData = false;
 
   constructor(private apiService: ApiService) { }
 
@@ -18,7 +19,10 @@ export class ThemesListComponent implements OnInit {
       next: (v) => {
         this.themeList = v;
       },
-      error: (e) => console.error(e) 
+      error: (e) => {
+        this.errorFetchingData = true;
+        console.error(e)
+      }
     });
   }
 }

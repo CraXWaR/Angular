@@ -10,6 +10,7 @@ import { IPost } from '../interfaces/post';
 export class PostsComponent implements OnInit {
 
   posts: IPost[] | null = null;
+  errorFetchingData = false;
 
   constructor(private apiService: ApiService) { }
 
@@ -18,8 +19,10 @@ export class PostsComponent implements OnInit {
       next: (v) => {
         this.posts = v;
       },
-      error: (e) => console.error(e) 
+      error: (e) => {
+        this.errorFetchingData = true;
+        console.error(e)
+      }
     });
   }
-
 }
