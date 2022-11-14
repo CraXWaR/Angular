@@ -11,10 +11,11 @@ export class ThemesListComponent implements OnInit {
   constructor(private apiService: ApiService) { }
 
   ngOnInit(): void {
-    this.apiService.loadThemes().subscribe((v) => {
-      console.log(v);
-      
-    })
+    this.apiService.loadThemes().subscribe({
+      next: (v) => {
+        console.log(v);
+      },
+      error: (e) => console.error(e) 
+    });
   }
-
 }
