@@ -1,7 +1,7 @@
 const express = require('express');
 const path = require('path');
-const cookieParser = require('cookie-parse');
-const cookieSecret = process.env.COOKIESECRET || 'project';
+const cookieParser = require('cookie-parser');
+const cookieSecret = process.env.COOKIESECRET || 'project'; //TODO change the OR statement
 
 module.exports = (app) => {
     app.use(express.json());
