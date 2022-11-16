@@ -1,6 +1,5 @@
 const jwt = require('./jwt');
 const authCookieName = 'auth-cookie';
-//TODO add models....
 const { userModel, tokenBlacklistModel } = require('../models/userModel');
 
 function auth(unauthenticated = true) {
