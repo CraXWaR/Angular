@@ -42,3 +42,32 @@ function register(req, res, next) {
             next(err);
         })
 }
+
+function login(req, res, next) {
+    const { email, password } = req.body;
+
+    userModel.findOne({ email })
+        .then(user => {
+            return Promise.all([user, user ? user.matchPassword(password) : false]);
+        })
+        .then(([user, match]) => {
+            if (!match) {
+                res.status(401)
+                    .send({ message: 'Wrong email or password' });
+                return;
+            }
+            user = bsonToJson(user);
+            user = removePass(user);
+
+            const token = utils.jwt.createToken({ id: user._id });
+
+            if (process.env.NODE_ENV === 'production') {
+                res.cookie(authCookieName, token, { httpOnly: true, sameSite: 'none', secure: true })
+            } else {
+                res.cookie(authCookieName, token, { httpOnly: true })
+            }
+            res.status(200)
+                .send(user);
+        })
+        .catch(next);
+}
