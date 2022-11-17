@@ -71,3 +71,22 @@ function login(req, res, next) {
         })
         .catch(next);
 }
+
+function logout(req, res) {
+    const token = req.cookies[authCookieName];
+
+    tokenBlacklistModel.create({ token })
+        .then(() => {
+            res.clearCookie(authCookieName)
+                .status(204)
+                .send({ message: 'Logged out!' });
+        })
+        .catch(err => res.send(err));
+}
+
+module.exports = {
+    register,
+    login,
+    logout,
+    
+}
