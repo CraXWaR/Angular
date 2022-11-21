@@ -8,6 +8,7 @@
     border: 1px solid black;
     border-radius: 20px;
     box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    font-family: 'Fira Sans', sans-serif;
 }
 
 .login-container h1 {
@@ -68,13 +69,13 @@
 
 .btn-login {
     cursor: pointer;
-    width: auto;
+    width: 200px;
     height: 35px;
     margin-top: 30px;
-    margin-left: 125px;
+    margin-left: 60px;
     padding-left: 10px;
-    padding-top: 7px;
-    padding-bottom: 10px;
+    padding-top: 12px;
+    padding-bottom: 30px;
     padding-right: 10px;
     border-radius: 10px;
     background-color: #1c1c1c;
