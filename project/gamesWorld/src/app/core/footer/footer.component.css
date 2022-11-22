@@ -3,6 +3,7 @@ footer {
     position: sticky;
     background-color: #21160c;
     text-align: center;
+    font-family: 'Fira Sans', sans-serif;
 }
 
 p {

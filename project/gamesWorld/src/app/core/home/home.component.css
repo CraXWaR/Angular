@@ -3,7 +3,8 @@
     width: 75%;
     height: 50%;
     margin-top: 5px;
-    color: #996019;
+    color: #2a4551;
+    font-family: 'Fira Sans', sans-serif;
 }
 
 .main-content img {
@@ -11,8 +12,9 @@
 }
 section {
     text-align: center;
+    
 }
 .news-content {
-    
     margin-top: -5%;
+    border: 5px solid red;
 }
