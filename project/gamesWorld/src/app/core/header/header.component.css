@@ -26,3 +26,8 @@ ul li a {
     color: #996019;
     text-decoration: none;
 }
+
+
+ul li a:hover {
+    color: orange;
+}
