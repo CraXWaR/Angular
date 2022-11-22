@@ -1,9 +1,10 @@
 nav {
+    position: center;
     width: fit-content;
     margin-top: 5%;
-    margin-left: 30%;
+    margin-left: 23%;
     display: block;
-    border: 5px solid #21160c;
+    border: 5px solid #1c120a;
     background-color: #21160c;
 }
 
@@ -15,7 +16,7 @@ ul {
 
 ul li {
     font-size: 20px;
-    padding-right: 40px;
+    padding-right: 75px;
     margin-left: 30px;
 
 }
