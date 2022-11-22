@@ -1,0 +1,27 @@
+nav {
+    width: fit-content;
+    margin-top: 5%;
+    margin-left: 30%;
+    display: block;
+    border: 5px solid #21160c;
+    background-color: #21160c;
+}
+
+ul {
+    list-style-type: none;
+    display: flex;
+    
+}
+
+ul li {
+    font-size: 20px;
+    padding-right: 40px;
+    margin-left: 30px;
+
+}
+
+ul li a {
+    margin-right: 5%;
+    color: #996019;
+    text-decoration: none;
+}
