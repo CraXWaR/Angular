@@ -3,8 +3,9 @@
     width: 75%;
     height: 50%;
     margin-top: 5px;
-    color: #2a4551;
+    color: #998e71;
     font-family: 'Fira Sans', sans-serif;
+    font-size: 20px;
 }
 
 .main-content img {
@@ -12,9 +13,35 @@
 }
 section {
     text-align: center;
-    
+    height: 30px;
 }
 .news-content {
-    margin-top: -5%;
-    border: 5px solid red;
+    width: 30%;
+    height: 230px;
+    margin-left: 23%;
+    margin-top: -7%;
+    padding-top: 10px;
+    position: absolute;
+    background-color: #0f0f0f;
+    border: 2px solid #332218;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+
+.news-content h4 {
+    margin-bottom: -10px;
+    margin-left: 15px;
+    text-align: left;
+    color: #427d14;
+    font-size: 15px;
+}
+
+.news-content p {
+    margin-left: 15px;
+    text-align: left;
+    font-size: 15px;
+}
+
+.news-content::-webkit-scrollbar {
+    width: 10px;
 }
