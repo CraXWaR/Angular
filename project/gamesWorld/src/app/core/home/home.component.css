@@ -1,0 +1,18 @@
+.main-content {
+    margin: auto;
+    width: 75%;
+    height: 50%;
+    margin-top: 5px;
+    color: #996019;
+}
+
+.main-content img {
+    width: 100%;
+}
+section {
+    text-align: center;
+}
+.news-content {
+    
+    margin-top: -5%;
+}

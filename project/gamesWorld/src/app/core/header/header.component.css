@@ -1,16 +1,17 @@
 nav {
-    position: center;
     width: fit-content;
-    margin-top: 5%;
-    margin-left: 23%;
+    margin: auto;
+    margin-top: 3%;
     display: block;
     border: 5px solid #1c120a;
     background-color: #21160c;
+
 }
 
 ul {
     list-style-type: none;
     display: flex;
+    text-align: center;
     
 }
 
