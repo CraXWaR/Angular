@@ -10,6 +10,10 @@ const gameSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    gameDescription: {
+        type: String,
+        require: true
+    },
     likes: [{
         type: ObjectId,
         ref: 'User'

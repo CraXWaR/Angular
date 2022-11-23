@@ -1,1 +1,20 @@
-<p>create works!</p>
+<section class="create-container">
+    <form action="/create" method="post" class="register-form">
+        <h1>Create Game</h1>
+        <p>Join the creators.</p>
+
+        <label for="gameName"></label>
+        <input type="text" id="gameName" placeholder="World of Warcraft" name="gameName">
+
+        <label for="genre"></label>
+        <input type="text" id="genre" placeholder="MMORPG" name="gameGenre">
+
+        <label for="gameDescription"></label>
+        <textarea id="gameDescription"placeholder="World of Warcraft (WoW) is a massively multiplayer online role-playing game (MMORPG) released in 2004 by Blizzard Entertainment."name="gameDescription" cols="30" rows="10"></textarea>
+
+        <div>
+            <button class="btn-create">Create game</button>
+        </div>
+
+    </form>
+</section>
