@@ -56,17 +56,6 @@
     font-size: 15px;
 } */
 
-.login-container p {
-    font-size: 20px;
-    text-align: center;
-    padding-top: 20px;
-    margin-left: 15px;
-}
-
-.login-container p>a {
-    color: #9b9b9b;
-}
-
 .btn-login {
     cursor: pointer;
     width: 200px;
