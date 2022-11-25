@@ -4,12 +4,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 import { PagesModule } from './pages/pages.module';
+import { AppEmailDirective } from './shared/validators/app-email.directive';
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
+    AppEmailDirective,
   ],
   imports: [
     BrowserModule,
