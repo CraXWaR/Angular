@@ -25,7 +25,6 @@ import { AuthModule } from './auth/auth.module';
     HttpClientModule
   ],
   exports: [
-    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
