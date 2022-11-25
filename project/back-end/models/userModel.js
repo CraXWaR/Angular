@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
-const saltRounds = Number(process.env.SALT) || 5;
+const saltRounds = Number(process.env.SALTROUNDS) || 5;
 
 const { ObjectId } = mongoose.Schema.Types;
 
@@ -14,7 +14,7 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true,
         unique: true,
-        minlength: [2, 'Username should be at least 2 characters'],
+        minlength: [5, 'Username should be at least 5 characters'],
         validate: {
             validator: function (v) {
                 return /[a-zA-Z0-9]+/g.test(v);
@@ -25,21 +25,21 @@ const userSchema = new mongoose.Schema({
     password: {
         type: String,
         required: true,
-        minlength: [3, 'Password should be at least 3 characters'],
-        // validate: {
-        //     validator: function (v) {
-        //         return /[a-zA-Z0-9]+/g.test(v);
-        //     },
-        //     message: props => `${props.value} must contains only latin letters and digits!`
-        // },
+        minlength: [5, 'Password should be at least 5 characters'],
+        validate: {
+            validator: function (v) {
+                return /[a-zA-Z0-9]+/g.test(v);
+            },
+            message: props => `${props.value} must contains only latin letters and digits!`
+        },
     },
     games: [{
         type: ObjectId,
-        ref: 'Game'
+        ref: "Game"
     }],
     comments: [{
         type: ObjectId,
-        ref: 'Comments'
+        ref: "Post"
     }]
 }, { timestamps: { createdAt: 'created_at' } });
 

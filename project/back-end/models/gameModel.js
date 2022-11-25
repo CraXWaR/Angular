@@ -1,31 +1,27 @@
 const mongoose = require('mongoose');
 const { ObjectId } = mongoose.Schema.Types;
 
-const gameSchema = new mongoose.Schema({
+const themeSchema = new mongoose.Schema({
     gameName: {
         type: String,
-        require: true
-    },
-    gameGenre: {
-        type: String,
         required: true
     },
-    gameImg: {
+    description: {
         type: String,
         required: true
-    },
-    gameDescription: {
-        type: String,
-        require: true
     },
     likes: [{
         type: ObjectId,
-        ref: 'User'
+        ref: "User"
     }],
-    ownerId: {
+    userId: {
         type: ObjectId,
-        ref: 'User'
+        ref: "User"
     },
+    comments: [{
+        type: ObjectId,
+        ref: "Post"
+    }],
 }, { timestamps: { createdAt: 'created_at' } });
 
-module.exports = mongoose.model('Game', gameSchema);
+module.exports = mongoose.model('Theme', themeSchema);
