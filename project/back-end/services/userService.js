@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
-const PORT = require('../environment');
+const PORT = require('../enviorment');
 const User = require('../models/User');
 
 const validToken = (token) => {
