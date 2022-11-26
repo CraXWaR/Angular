@@ -27,3 +27,19 @@ const createToken = (user) => {
         accessToken
     };
 }
+
+const register = async (username, email, password) => {
+    const existingUsername = await User.findOne({ username });
+    if (existingUsername) {
+        throw new Error('Username already exists!')
+    }
+
+    const existingEmail = await User.findOne({ email });
+    if (existingEmail) {
+        throw new Error('Email already exists!')
+    }
+
+    const user = await User.create({ username, email, password });
+    return createToken(user);
+    
+}
