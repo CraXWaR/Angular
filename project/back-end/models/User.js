@@ -14,16 +14,16 @@ const userSchema = new Schema({
         unique: true, 
         // minlength: [10, 'Email should be at least 10 charcters'] 
     },
-    password: { 
+    hashedPassword: { 
         type: String, 
         required: true 
     }
 })
 
 userSchema.pre('save', function (next) {
-    bcrypt.hash(this.password, 9)
-    .then((hashedPassword) => {
-        this.password = hashedPassword;
+    bcrypt.hash(this.hashedPassword, 9)
+    .then((hash) => {
+        this.hashedPassword = hash;
         return next();
     });
 })

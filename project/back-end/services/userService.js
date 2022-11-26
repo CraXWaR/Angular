@@ -41,5 +41,26 @@ const register = async (username, email, password) => {
 
     const user = await User.create({ username, email, password });
     return createToken(user);
-    
+
+}
+
+const login = async (username, password) => {
+    const user = await User.findOne({ username });
+    if (!user) {
+        throw new Error('Wrong username or password!');
+    }
+
+    const isUser = await bcrypt.compare(password, user.hashedPassword);
+    if (isUser) {
+        return createToken(user);
+    } else {
+        throw new Error('Wrong username or password!'); 
+    }
+}
+
+module.exports = {
+    validToken,
+    createToken,
+    register,
+    login
 }
