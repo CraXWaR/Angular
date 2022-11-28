@@ -6,8 +6,8 @@ const initDatabase = require('./config/db');
 const routes = require('./routes');
 const authMiddleware = require('./middlewares/authMiddle');
 
-app.unsubscribe(cors());
 app.use(express.json());
+app.use(cors());
 app.use(authMiddleware);
 app.use(routes);
 //Init DB
