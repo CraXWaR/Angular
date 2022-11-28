@@ -17,21 +17,21 @@ const routes: Routes = [
     }
   },
   {
-    path: 'auth/login',
+    path: 'login',
     component: LoginComponent,
     data: {
       title: 'Login Page'
     }
   },
   {
-    path: 'auth/logout',
+    path: 'logout',
     component: LogoutComponent,
     data: {
       title: 'Logout'
     }
   },
   {
-    path: 'auth/register',
+    path: 'register',
     component: RegisterComponent,
     data: {
       title: 'Register Page'

@@ -1,16 +1,16 @@
 <section class="register-container">
-    <form [formGroup]="form" (ngSubmit)="registerHandler()" class="register-form">
+    <form (ngSubmit)="registerHandler()" class="register-form">
         <h1>Register</h1>
         <p>Join us and find the best game for you.</p>
 
         <label for="username"></label>
-        <input type="text" id="username" placeholder="Username" name="username" formControlName="username">
+        <input type="text" id="username" placeholder="Username" name="username">
 
         <label for="email"></label>
-        <input type="text" id="email" placeholder="Email@abv.bg" name="email" formControlName="email">
+        <input type="text" id="email" placeholder="Email@abv.bg" name="email">
 
         <label for="password"></label>
-        <input type="password" id="password" placeholder="Password" name="password" formControlName="password">
+        <input type="password" id="password" placeholder="Password" name="password">
 
         <label for="repeat-password"></label>
         <input type="password" id="repeat-password" placeholder="Repeat Password" name="rePassword">
@@ -20,7 +20,7 @@
         </div>
 
         <div>
-            <p>Already have an account? <a href="/auth/login">Login</a></p>
+            <p>Already have an account? <a href="/login">Login</a></p>
         </div>
     </form>
 </section>
