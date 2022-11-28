@@ -58,9 +58,14 @@ const login = async (username, password) => {
     }
 }
 
+const logout = (token) => {
+    blacklist.add(token)
+}
+
 module.exports = {
     validToken,
     createToken,
     register,
-    login
+    login,
+    logout
 }
