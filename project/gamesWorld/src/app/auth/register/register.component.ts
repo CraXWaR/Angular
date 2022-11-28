@@ -12,9 +12,14 @@ export class RegisterComponent implements OnInit {
   SERVER_URL = 'http://localhost:3000/register';
 
 
-  constructor(http:HttpClient, private activatedRoute: ActivatedRoute, private router: Router) { }
+  constructor(private http:HttpClient, private activatedRoute: ActivatedRoute, private router: Router) { }
 
-  registerHandler() {
+  registerHandler(data: any) {
+    this.http.post(this.SERVER_URL, data)
+      .subscribe((result) => {
+        console.warn('result', result);
+        
+      })
     
   }
 

@@ -1,8 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-login',
@@ -11,26 +9,20 @@ import { AuthService } from '../auth.service';
 })
 export class LoginComponent implements OnInit {
  
-  @ViewChild(
-    // 'form',
-    NgForm,
-    { static: true }
-  ) form!: ElementRef<HTMLInputElement>;
+  SERVER_URL = 'http://localhost:3000/login';
 
-  constructor(private http:HttpClient, private activatedRoute: ActivatedRoute, private router: Router, private authServie: AuthService) { }
+  constructor(private http:HttpClient, private activatedRoute: ActivatedRoute, private router: Router) { }
 
-  loginHandler(form: NgForm): void {
-    if (form.invalid) { return; }
-    this.authServie.user = {
-      username: 'John',
-      email: '',
-      password: ''
-    } as any;
+  loginHandler(data: any){
+    this.http.get(this.SERVER_URL, data)
+      .subscribe((result) => {
+        console.warn('result', result);
+        
+      })
 
-
-    const returnUrl = this.activatedRoute.snapshot.queryParams['returnUrl'] || '/';
+    // const returnUrl = this.activatedRoute.snapshot.queryParams['returnUrl'] || '/';
     
-    this.router.navigate([returnUrl]);
+    // this.router.navigate([returnUrl]);
   }
 
   ngOnInit(): void {
