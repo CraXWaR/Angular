@@ -1,30 +1,48 @@
-const { register, login } = require('../services/userService');
-const router = require('express').Router();
+const authController = require('express').Router();
+const { body, validationResult } = require('express-validator')
+const { register, login, logout, createToken, getById } = require('../services/user');
+const { parseError } = require('../util/parser');
+const session = require('../middlewares/session');
 
-router.post('/register', async (req, res) => {
-    const { username, email, password } = req.body;
+authController.post('/register',
+    body('email').isEmail().withMessage('Invalid Email'),
+    body('password').isLength({ min: 3 }).withMessage('Password must be at least 3 characrers long'),
+    async (req, res) => {
+
+        try {
+            const { errors } = validationResult(req);
+            if (errors.length > 0) {
+                throw errors;
+            }
+            const user = await register(req.body.email, req.body.username, req.body.password);
+            token = createToken(user)
+            const userData = removePassword(user)
+            res.json({ userData, token, expiresIn: 3600 })
+        } catch (error) {
+            const message = parseError(error)
+            res.status(400).json({ message })
+        }
+    });
+
+authController.post('/login', async (req, res) => {
     try {
-        const user = await register(username, email, password);
-        res.status(201).json(user)
-    } catch (error) {
-        res.status(400).json({ error })
-    }
-    res.end();
-})
+        const user = await login(req.body.email, req.body.password);
+        const token = createToken(user);
+        const userData = removePassword(user)
 
-router.get('/login', async (req, res) => {
-    const { username, password } = req.body;
-    try {
-        const user = await login(username, password);
-        res.status(201).json(user);
+        console.log('POST')
+        res.json({ userData, token, expiresIn: 3600 })
     } catch (error) {
-        res.status(400).json({ error })
+        const message = parseError(error)
+        res.status(401).json({ message })
     }
-    res.end();
-})
+});
 
-router.get('/logout', (req, res) => {
+authController.get('/logout', async (req, res) => {
+    const token = req.token
+    await logout(token);
     res.status(204).end();
+
 })
 
-module.exports = router;
+module.exports = authController;
