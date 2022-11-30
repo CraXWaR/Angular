@@ -2,9 +2,9 @@ const express = require('express');
 const cors = require('cors')
 require('dotenv').config()
 // const cors = require('../middlewares/cors');
-const session = require('../middlewares/session');
+// const session = require('../middlewares/session');
 // const trimBody = require('../middlewares/trimBody');
-const { expressjwt: expressJwt } = require('express-jwt');
+// const { expressjwt: expressJwt } = require('express-jwt');
 
 module.exports = (app) => {
     app.use('*', cors());

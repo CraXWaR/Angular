@@ -3,7 +3,7 @@ function hasUser(){
        if(req.user){
         next()
        }else {
-        res.status(401).json({ message: "Please Login"})
+        res.status(401).json({ message: "Please Login!"})
        }
     } 
 }

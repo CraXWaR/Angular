@@ -1,4 +1,4 @@
-const { parseToken } = require("../services/user");
+const { parseToken } = require("../services/userService");
 
 module.exports = () => (req, res, next) => {
 
@@ -12,7 +12,7 @@ module.exports = () => (req, res, next) => {
       req.user = payload;
       req.token = token;
     } catch (error) {
-       return res.status(401).json({message: 'Invalid authorization token'})
+       return res.status(401).json({message: 'Invalid authorization token!'})
     }
   }
   next()

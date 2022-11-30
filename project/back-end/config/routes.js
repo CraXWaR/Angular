@@ -1,4 +1,4 @@
-const authController = require('../controllers/auth');
+const authController = require('../controllers/authController');
 // const dataController = require('../controllers/data');
 
 module.exports = (app) => {

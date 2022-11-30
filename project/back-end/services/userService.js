@@ -2,7 +2,7 @@ const bcrypt = require('bcrypt');
 const User = require("../models/User");
 const jwt = require('jsonwebtoken');
 
-const SECRET_PASSWORD = '5g$SpczU@^@(Qjza';
+const SECRET_PASSWORD = 'mei63sy1@o5(n-+cd8we^!5a5j@8^w41k=sw_*!q-bd!yvcjc3';
 
 const tokenBlackList = new Set();
 
