@@ -1,6 +1,7 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { UserService } from '../services/auth.service';
+
 
 @Component({
   selector: 'app-register',
@@ -9,21 +10,30 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class RegisterComponent implements OnInit {
 
-  SERVER_URL = 'http://localhost:3000/register';
+  constructor(private _auth: UserService, private formBuilder: FormBuilder) { }
 
-
-  constructor(private http:HttpClient, private activatedRoute: ActivatedRoute, private router: Router) { }
-
-  registerHandler(data: any) {
-    this.http.post(this.SERVER_URL, data)
-      .subscribe((result) => {
-        console.warn('result', result);
-        
-      })
-    
-  }
+  signUpForm!: FormGroup;
+  errorMessage = '';
+  isLoading: boolean = false;
 
   ngOnInit(): void {
+    this.signUpForm = new FormGroup ({
+      email: new FormControl(null, [Validators.required, Validators.email]),
+      username: new FormControl(null, [Validators.required, Validators.minLength(5)]),
+      password: new FormControl(null, [Validators.required, Validators.minLength(5)]),
+      rePassword: new FormControl(null,  [Validators.required, Validators.minLength(5)]),
+    })
+  }
+
+  onRegister(){
+    console.log(this.signUpForm.controls)
+    const {username, email, password, rePassword} = this.signUpForm.value;
+    
+    if(password !== rePassword){
+      this.errorMessage = 'Passwords Don\'t Match';
+      return;
+    }
+    this._auth.registerUser(this.signUpForm.value)
   }
 
 }

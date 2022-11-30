@@ -1,22 +1,22 @@
 <section class="register-container">
-    <form #form="ngForm" (ngSubmit)="registerHandler(form.value)" class="register-form">
+    <form [formGroup]="signUpForm" class="register-form">
         <h1>Register</h1>
         <p>Join us and find the best game for you.</p>
 
         <label for="username"></label>
-        <input type="text" id="username" placeholder="Username" name="username" ngModel>
+        <input type="text" id="username" placeholder="Username" name="username" formControlName="username" required>
 
         <label for="email"></label>
-        <input type="text" id="email" placeholder="Email@abv.bg" name="email" ngModel>
+        <input type="text" id="email" placeholder="Email@abv.bg" name="email" formControlName="email" required>
 
         <label for="password"></label>
-        <input type="password" id="password" placeholder="Password" name="password" ngModel>
+        <input type="password" id="password" placeholder="Password" name="password" formControlName="password" required>
 
         <label for="repeat-password"></label>
-        <input type="password" id="repeat-password" placeholder="Repeat Password" name="rePassword" ngModel>
+        <input type="password" id="repeat-password" placeholder="Repeat Password" name="rePassword" formControlName="rePassword" required>
 
         <div>
-            <button class="btn-register">Create an account</button>
+            <button (click)="onRegister()" class="btn-register">Create an account</button>
         </div>
 
         <div>
