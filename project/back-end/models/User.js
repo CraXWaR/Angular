@@ -1,5 +1,4 @@
-const { Schema, model  } = require('mongoose');
-const bcrypt = require('bcrypt');
+const {Schema , model} = require('mongoose');
 
 const userSchema = new Schema({
     username: { 
@@ -20,14 +19,13 @@ const userSchema = new Schema({
     }
 })
 
-userSchema.pre('save', function (next) {
-    bcrypt.hash(this.hashedPassword, 9)
-    .then((hash) => {
-        this.hashedPassword = hash;
-        return next();
-    });
+userSchema.index({ email: 1}, {
+    collation: {
+        locale: 'en',
+        strength: 2
+    }
 })
 
-const User = model('User', userSchema);
+const User = new model('User', userSchema);
 
 module.exports = User;
