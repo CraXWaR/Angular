@@ -16,8 +16,8 @@ authController.post('/register',
             }
             const user = await register(req.body.email, req.body.username, req.body.password);
             token = createToken(user);
-            const userData = removePassword(user);
-            res.json({ userData, token, expiresIn: 3600 });
+
+            res.json({ token, expiresIn: 3600 });
         } catch (error) {
             const message = parseError(error);
             res.status(400).json({ message });
@@ -28,10 +28,9 @@ authController.post('/login', async (req, res) => {
     try {
         const user = await login(req.body.email, req.body.password);
         const token = createToken(user);
-        const userData = removePassword(user)
 
         console.log('POST');
-        res.json({ userData, token, expiresIn: 3600 })
+        res.json({ token, expiresIn: 3600 })
     } catch (error) {
         const message = parseError(error);
         res.status(401).json({ message });
