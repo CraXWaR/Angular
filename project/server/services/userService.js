@@ -4,6 +4,21 @@ const User = require('../models/User');
 
 const secret = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9';
 
+function createToken(user) {
+    const payload = {
+        _id: user._id,
+        username: user.username,
+        email: user.email
+    };
+
+    return {
+        _id: user._id,
+        username: user.username,
+        email: user.email,
+        accessToken: jwt.sign(payload, secret)
+    };
+}
+
 async function register(username, email, password) {
     const existingUsername = await User.findOne({ username }).collation({ locale: 'en', strength: 2 });
     if (existingUsername) {
