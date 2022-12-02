@@ -19,6 +19,14 @@ function createToken(user) {
     };
 }
 
+function parseToken(token) {
+    try {
+        return jwt.verify(token, secret);
+    } catch (error) {
+        throw new Error('Invalid token!');
+    }
+}
+
 async function register(username, email, password) {
     const existingUsername = await User.findOne({ username }).collation({ locale: 'en', strength: 2 });
     if (existingUsername) {
@@ -52,3 +60,9 @@ async function login(username, password) {
 
     return createToken(user);
 }
+
+module.exports = {
+    parseToken,
+    register, 
+    login
+};
