@@ -18,14 +18,14 @@ const userSchema = new Schema({
 userSchema.index({ username: 1 }, {
     collation: {
         locale: 'en',
-        strength2
+        strength: 2
     }
 });
 
 userSchema.index({ email: 1 }, {
     collation: {
         locale: 'en',
-        strength2
+        strength: 2
     }
 });
 
