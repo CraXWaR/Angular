@@ -1,34 +1,33 @@
-const { Schema, model } = require('mongoose');
+const mongoose = require('mongoose');
+const bcrypt = require('bcrypt');
 
-const userSchema = new Schema({
+
+const userSchema = new mongoose.Schema({
     username: {
         type: String,
-        required: true
+        // required: true,
+        // minlength: [4, 'Username should have at least 4 characters!'],
+        // maxlength: [15, 'Username cannot have more than 15 characters!'],
     },
     email: {
         type: String,
-        required: true
+        // required: true,
     },
-    hashedPassword: {
+    password: {
         type: String,
-        required: true
-    }
+        // required: true,
+        // minlength: [3, 'Password should have at least 3 characters!'],
+    },
 });
 
-userSchema.index({ username: 1 }, {
-    collation: {
-        locale: 'en',
-        strength: 2
-    }
-});
+// userSchema.pre('save', function (next) {
+//     bcrypt.hash(this.password, 9)
+//     .then((hash) =>{
+//          this.password = hash
+//          return next()
+//     })
+// });
 
-userSchema.index({ email: 1 }, {
-    collation: {
-        locale: 'en',
-        strength: 2
-    }
-});
-
-const User = model('User', userSchema);
+const User = new mongoose.model('User', userSchema);
 
 module.exports = User;

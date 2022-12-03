@@ -1,24 +1,37 @@
-const authController = require('express').Router();
-const { login, register } = require('../services/userService');
+const { register, login } = require('../services/userService');
 
-authController.post('/register', async (req, res) => {
+const router = require('express').Router();
+
+
+router.post('/register', async (req, res) => {
+    const { username, email, password } = req.body;
     try {
-        const token = await register(req.body.username, req.body.email, req.body.password);
-        res.status(201).json(token);
-        res.end();
-    } catch (error) {
-        res.status(400).json({ error });
-    }
-});
+        const user = await register(username, email, password);
+        res.status(201).json(user);
 
-authController.post('/login', async (req, res) => {
+    } catch (error) {
+        console.log(error);
+        res.status(400).json({error});
+
+    }
+    res.end();
+})
+
+router.get('/login', async (req, res) => {
+    const { email, password } = req.body;
     try {
-        const token = await register(req.body.username, req.body.password);
-        res.status(200).json(token);
-        res.end();
-    } catch (error) {
-        res.status(400).json({ error });
-    }
-});
+        const user = await login(email, password);
+        res.status(201).json(user);
 
-module.exports = authController;
+    } catch (error) {
+        res.status(400).json({error});
+
+    }
+    res.end();
+})
+
+router.get('/logout', (req, res) => {
+    res.status(204).end();
+    
+});
+module.exports = router;

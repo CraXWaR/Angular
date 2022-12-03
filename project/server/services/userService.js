@@ -1,68 +1,57 @@
+const jwt = require('jsonwebtoken')
 const bcrypt = require('bcrypt');
-const jwt = require('jsonwebtoken');
-const User = require('../models/User');
+const server = require('../environment')
+const User = require('../models/User')
 
-const secret = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9';
-
-function createToken(user) {
+const validateToken = (token) => {
+    try {
+        const data = jwt.verify(token, server.SECRET_KEY)
+        return data
+    } catch (error) {
+        throw new Error('Invalid access token!')
+    }
+}
+const createAccessToken = (user) => {
     const payload = {
         _id: user._id,
-        username: user.username,
-        email: user.email
-    };
-
-    return {
-        _id: user._id,
-        username: user.username,
         email: user.email,
-        accessToken: jwt.sign(payload, secret)
+        username: user.username,
+    }
+    const accessToken = jwt.sign(payload, server.SECRET_KEY)
+    return {
+        email: user.email,
+        username: user.username,
+        accessToken,
+        _id: user._id
     };
 }
-
-function parseToken(token) {
-    try {
-        return jwt.verify(token, secret);
-    } catch (error) {
-        throw new Error('Invalid token!');
+const register = async (username, email, password) => {
+    //TODO ADD USERNAME
+    // const existing = await User.findOne({email})
+    // if(existing){
+    //     throw new Error('Email already exists!')
+    // }
+    const user = await User.create({username, email, password})
+    return createAccessToken(user)
+}
+const login = async (email, password) => {
+    const user = await User.findOne({email});
+    if(!user){
+        throw new Error('Invalid email or password!')
+    }
+    const isUser = await bcrypt.compare(password, user.password)
+    if(isUser){
+        return createAccessToken(user)
+    }else {
+        throw new Error('Invalid email or password!')
     }
 }
-
-async function register(username, email, password) {
-    const existingUsername = await User.findOne({ username }).collation({ locale: 'en', strength: 2 });
-    if (existingUsername) {
-        throw new Error('Username is already taken!');
-    }
-
-    const existingEmail = await User.findOne({ email }).collation({ locale: 'en', strength: 2 });
-    if (existingEmail) {
-        throw new Error('Email is already taken!');
-    }
-
-    const user = await User.create({
-        username,
-        email,
-        hashedPassword: await bcrypt.hash(password, 9)
-    });
-
-    return createToken(user);
+const logout = (token) => {
+    blacklist.add(token)
 }
-
-async function login(username, password) {
-    const user = await User.findOne({ username }).collation({ locale: 'en', strength: 2 });
-    if (!user) {
-        throw new Error('Wrong username or password!');
-    }
-    
-    const match = await bcrypt.compare(password, user.hashedPassword);
-    if (!match) {
-        throw new Error('Wrong username or password!');
-    }
-
-    return createToken(user);
-}
-
 module.exports = {
-    parseToken,
-    register, 
-    login
-};
+    login,
+    register,
+    createAccessToken,
+    validateToken
+}
