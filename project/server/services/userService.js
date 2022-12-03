@@ -7,6 +7,7 @@ const validateToken = (token) => {
     try {
         const data = jwt.verify(token, server.SECRET_KEY);
         return data;
+
     } catch (error) {
         throw new Error('Invalid access token!');
     }
@@ -41,11 +42,13 @@ const register = async (username, email, password) => {
 
     return createAccessToken(user);
 }
+
 const login = async (email, password) => {
     const user = await User.findOne({ email });
     if (!user) {
         throw new Error('Invalid email or password!')
     }
+
     const isUser = await bcrypt.compare(password, user.password);
     if (isUser) {
         return createAccessToken(user);
@@ -53,9 +56,11 @@ const login = async (email, password) => {
         throw new Error('Invalid email or password!');
     }
 }
+
 const logout = (token) => {
     blacklist.add(token)
-}
+};
+
 module.exports = {
     login,
     register,

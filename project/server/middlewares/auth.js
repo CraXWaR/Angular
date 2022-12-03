@@ -10,10 +10,10 @@ const authMiddleware = (req, res, next) => {
                 'username': user.username,
                 '_id': user._id,
                 token
-            }
+            };
         } catch (error) {
-            res.json(error)
-            console.log(error)
+            res.json(error);
+            console.log(error);
         }
     }
     next();
@@ -21,4 +21,4 @@ const authMiddleware = (req, res, next) => {
 
 module.exports = {
     authMiddleware,
-}
+};
