@@ -23,7 +23,7 @@ export class UserService implements OnDestroy {
         this.user = user
         localStorage.setItem('token', this.user.accessToken)
       })
-    )
+    );
   };
 
   login(data: {}){
@@ -32,7 +32,12 @@ export class UserService implements OnDestroy {
         this.user = user
         localStorage.setItem('token', this.user.accessToken)
       })
-    )
+    );
+  };
+
+  logout() {
+    this.user = null;
+    return localStorage.removeItem('token');
   }
 
   ngOnDestroy(): void {
