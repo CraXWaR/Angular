@@ -3,7 +3,7 @@ import { Injectable, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { tap } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { IUser } from '../interfaces/userInterface';
+import { IUser } from '../../shared/interfaces/userInterface';
 
 const API_URL = environment.apiUrl;
 
