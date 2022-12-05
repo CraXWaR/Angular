@@ -17,8 +17,17 @@ export class UserService implements OnDestroy {
 
   constructor(private http: HttpClient, private router: Router) { }
 
-  register(data: {}){
+  register(data: {}) {
     return this.http.post<IUser>(`${API_URL}/register`, data).pipe(
+      tap((user) => {
+        this.user = user
+        localStorage.setItem('token', this.user.accessToken)
+      })
+    )
+  };
+
+  login(data: {}){
+    return this.http.post<IUser>(`${API_URL}/login`, data).pipe(
       tap((user) => {
         this.user = user
         localStorage.setItem('token', this.user.accessToken)

@@ -1,12 +1,12 @@
 <section class="login-container">
-    <form class="login-form">
+    <form #form="ngForm" class="login-form" (ngSubmit)="onLogin(form)">
         <h1>Login</h1>
 
         <label for="username"></label>
-        <input type="text" id="username" placeholder="Username" name="username" ngModel>
+        <input #username="ngModel" ngModel type="text" id="username" placeholder="Username" name="username" required>
 
         <label for="password"></label>
-        <input type="password" id="password" placeholder="Password" name="password" ngModel>
+        <input #password="ngModel" ngModel type="password" id="password" placeholder="Password" name="password" required>
 
         <div>
             <button class="btn-login">Login</button>

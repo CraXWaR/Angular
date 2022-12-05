@@ -28,25 +28,25 @@ const createAccessToken = (user) => {
     };
 }
 const register = async (username, email, password) => {
-    // const existingUsername = await User.findOne({ email });
-    // if (existingUsername) {
-    //     throw new Error('Username is taken!');
-    // }
+    const existingUsername = await User.findOne({ email });
+    if (existingUsername) {
+        throw new Error('Username is taken!');
+    }
 
-    // const existingEmail = await User.findOne({ email });
-    // if (existingEmail) {
-    //     throw new Error('Email is taken!');
-    // }
+    const existingEmail = await User.findOne({ email });
+    if (existingEmail) {
+        throw new Error('Email is taken!');
+    }
 
     const user = await User.create({ username, email, password });
 
     return createAccessToken(user);
 }
 
-const login = async (email, password) => {
-    const user = await User.findOne({ email });
+const login = async (username, password) => {
+    const user = await User.findOne({ username });
     if (!user) {
-        throw new Error('Invalid email or password!')
+        throw new Error('Invalid username or password!')
     }
 
     const isUser = await bcrypt.compare(password, user.password);

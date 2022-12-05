@@ -23,7 +23,7 @@ export class RegisterComponent implements OnInit {
     });
   }
 
-  register() {
+  onRegister() {
     this.userService.register(this.form.value).subscribe({
       next: () => this.router.navigate(['/']),
       error: (err) => {
