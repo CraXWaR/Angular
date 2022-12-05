@@ -4,7 +4,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 import { PagesModule } from './pages/pages.module';
-import { AppEmailDirective } from './shared/validators/app-email.directive';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { AuthModule } from './auth/auth.module';
@@ -13,7 +12,6 @@ import { AuthModule } from './auth/auth.module';
 @NgModule({
   declarations: [
     AppComponent,
-    AppEmailDirective,
   ],
   imports: [
     BrowserModule,
