@@ -9,13 +9,21 @@ import { UserService } from 'src/app/auth/services/auth.service';
 })
 export class HeaderComponent implements OnInit {
 
+  get isLogged(): boolean {
+    if (this.userService.user) {
+      return true;
+    } else {
+      return false
+    }
+  }
+
   constructor(private userService: UserService, private router: Router) { }
 
   onLogout() {
     this.userService.logout();
     this.router.navigate(['/'])
     console.log('I\'m out');
-    
+
   }
 
   ngOnInit(): void {

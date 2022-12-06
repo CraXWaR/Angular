@@ -1,11 +1,7 @@
 export interface IUser {
     accessToken: string,
-    _id: string;
+    _id: any;
     email: string;
     username: string;
     password: string;
-    created_at: string;
-    updatedAt: string;
-    __v: number;
-       
 }

@@ -6,20 +6,24 @@
         <li>
             <a routerLink="/catalog">Catalog</a>
         </li>
-        <li>
-            <a routerLink="/login">Login</a>
-        </li>
-        <li>
-            <a routerLink="/register">Register</a>
-        </li>
-        <li>
-            <a routerLink="/create">Create</a>
-        </li>
-        <li>
-            <a routerLink="/profile">Profile</a>
-        </li>
-        <li>
-            <a (click)="onLogout()">Logout</a>
-        </li>
+        <ng-container *ngIf="!isLogged">
+            <li>
+                <a routerLink="/register">Register</a>
+            </li>
+            <li>
+                <a routerLink="/login">Login</a>
+            </li>
+        </ng-container>
+        <ng-container *ngIf="isLogged">
+            <li>
+                <a routerLink="/create">Create</a>
+            </li>
+            <li>
+                <a routerLink="/profile">Profile</a>
+            </li>
+            <li>
+                <a (click)="onLogout()">Logout</a>
+            </li>
+        </ng-container>
     </ul>
 </nav>
