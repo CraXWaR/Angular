@@ -2,7 +2,7 @@ const { createGame } = require('../services/gameService');
 
 const router = require('express').Router();
 
-router.post('/create', async (req, res) => {
+router.post('/', async (req, res) => {
     const data = req.body;
     try {
         // data.owner = req.user.username;

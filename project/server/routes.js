@@ -9,7 +9,7 @@ router.get('/', (req, res) => {
     // res.end()
 });
 
-router.use(gameController);
+router.use('/games', gameController);
 router.use(authController);
 
 module.exports = router;

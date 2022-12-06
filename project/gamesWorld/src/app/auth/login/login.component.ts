@@ -14,7 +14,7 @@ export class LoginComponent implements OnInit {
 
   errors: string | undefined = undefined;
 
-  onLogin(form: NgForm): void{
+  onLogin(form: NgForm) {
     this.userService.login(form.value).subscribe({
       next: () => this.router.navigate(['/']),
       error: (err) => {

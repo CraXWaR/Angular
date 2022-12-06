@@ -13,13 +13,13 @@ const gameSchema = new mongoose.Schema({
     },
     imageUrl: {
         type: String,
-        // required: true,
+        // required: true
     },
     description: {
         type: String,
         // required: true,
         // minlength: [10, 'Description should have at least 10 characters!'],
-        // maxlength: [50, 'Description shouldn\'t have more than 50 characters!'],
+        // maxlength: [100, 'Description shouldn\'t have more than 50 characters!']
     },
     owner: {
         type: [mongoose.Types.ObjectId],
