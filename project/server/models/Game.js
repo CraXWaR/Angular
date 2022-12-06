@@ -13,7 +13,7 @@ const gameSchema = new mongoose.Schema({
     },
     imageUrl: {
         type: String,
-        required: true,
+        // required: true,
     },
     description: {
         type: String,
@@ -22,7 +22,7 @@ const gameSchema = new mongoose.Schema({
         // maxlength: [50, 'Description shouldn\'t have more than 50 characters!'],
     },
     owner: {
-        type: [Types.ObjectId],
+        type: [mongoose.Types.ObjectId],
         ref: 'User'
     }
 });
