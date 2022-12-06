@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { UserService } from 'src/app/auth/services/auth.service';
+import { UserService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -10,11 +10,8 @@ import { UserService } from 'src/app/auth/services/auth.service';
 export class HeaderComponent implements OnInit {
 
   get isLogged(): boolean {
-    if (this.userService.user) {
-      return true;
-    } else {
-      return false
-    }
+    return this.userService.isLogged();
+
   }
 
   constructor(private userService: UserService, private router: Router) { }

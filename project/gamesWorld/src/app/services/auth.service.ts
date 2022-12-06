@@ -3,7 +3,7 @@ import { Injectable, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { tap } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { IUser } from '../../shared/interfaces/userInterface';
+import { IUser } from '../shared/interfaces/userInterface';
 
 const API_URL = environment.apiUrl;
 
@@ -38,6 +38,14 @@ export class UserService implements OnDestroy {
   logout() {
     this.user = null;
     return localStorage.removeItem('token');
+  }
+
+  isLogged() {
+    if (localStorage.getItem('token')) {
+      return true;
+    } else {
+      return false;
+    }
   }
 
   ngOnDestroy(): void {

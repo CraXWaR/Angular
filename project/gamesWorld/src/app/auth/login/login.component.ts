@@ -1,7 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
-import { UserService } from '../services/auth.service';
+import { UserService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-login',
