@@ -22,8 +22,8 @@ const gameSchema = new mongoose.Schema({
         // maxlength: [100, 'Description shouldn\'t have more than 50 characters!']
     },
     owner: {
-        type: [mongoose.Types.ObjectId],
-        ref: 'User'
+        type: mongoose.Types.ObjectId,
+        ref: 'User',
     }
 });
 

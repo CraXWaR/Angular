@@ -21,7 +21,7 @@ export class CreateComponent implements OnInit {
         this.errors = err.error.error
       }
     })
-    // console.log(form.value);
+    console.log(form.value);
     
   }
 
