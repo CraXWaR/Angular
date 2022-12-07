@@ -1,4 +1,4 @@
-const { createGame } = require('../services/gameService');
+const { createGame, getAllGames } = require('../services/gameService');
 
 const router = require('express').Router();
 
@@ -11,6 +11,12 @@ router.post('/', async (req, res) => {
     } catch (error) {
         res.status(400).json({ error: error.message })
     }
+});
+
+router.get('/', async (req, res) => {
+    const games = await getAllGames();
+    res.status(200).json(games);
+    
 });
 
 module.exports = router;

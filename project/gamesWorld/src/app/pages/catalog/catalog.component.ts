@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { GameService } from 'src/app/services/game.service';
+import { IGame } from 'src/app/shared/interfaces/gamgeInterface';
 
 @Component({
   selector: 'app-catalog',
@@ -7,7 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CatalogComponent implements OnInit {
 
-  constructor() { }
+  games: IGame[] | undefined;
+  constructor(private gameService: GameService) {
+    this.getAllGames();
+   }
+ 
+   getAllGames(){
+    this.games = undefined;
+    this.gameService.getAllGames().subscribe((games) => this.games = games)
+   }
 
   ngOnInit(): void {
   }

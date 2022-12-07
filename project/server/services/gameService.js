@@ -8,7 +8,13 @@ const createGame = async (game) => {
     }
 };
 
+const getAllGames = async () => {
+    return await Game.find({});
+
+}
+
 module.exports = {
     createGame,
+    getAllGames,
     
 }

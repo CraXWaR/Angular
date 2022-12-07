@@ -1,6 +1,17 @@
 <section class="catalog-container">
     <div class="all-games-div">
-        <div class="game-div">
+        <ng-container *ngFor="let game of games">
+            <div class="game-div">
+                <img src={{game.imageUrl}} alt="Game picture" width="150px" height="200px">
+                <div class="description">
+                    {{game.description}}
+                </div>
+                <div>
+                    <button class="btn-details">Details</button>
+                </div>
+            </div>
+        </ng-container>
+        <!-- <div class="game-div">
             <img src="../../../assets/img/World_of_Warcraft.png" alt="WoW Pic" width="150px" height="200px">
             <div class="description">
                 World of Warcraft (WoW) is a massively multiplayer online role-playing game (MMORPG) released in 2004 by
@@ -49,16 +60,6 @@
             <div>
                 <button class="btn-details">Details</button>
             </div>
-        </div>
-        <div class="game-div">
-            <img src="../../../assets/img/World_of_Warcraft.png" alt="WoW Pic" width="150px" height="200px">
-            <div class="description">
-                World of Warcraft (WoW) is a massively multiplayer online role-playing game (MMORPG) released in 2004 by
-                Blizzard Entertainment.
-            </div>
-            <div>
-                <button class="btn-details">Details</button>
-            </div>
-        </div>
+        </div> -->
     </div>
 </section>
