@@ -13,8 +13,12 @@ const getAllGames = async () => {
 
 }
 
+const getOneGame = async () => {
+    return await Game.findById(id).populate('owner');
+}
+
 module.exports = {
     createGame,
     getAllGames,
-    
+    getOneGame
 }
