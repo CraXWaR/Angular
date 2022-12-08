@@ -10,7 +10,7 @@
                         {{game.description}}
                     </div>
                     <div>
-                        <button class="btn-details">Details</button>
+                        <button [routerLink]="['/games', game._id]" class="btn-details">Details</button>
                     </div>
                 </div>
             </ng-container>

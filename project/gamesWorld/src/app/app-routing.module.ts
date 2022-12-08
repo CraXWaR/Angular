@@ -5,6 +5,7 @@ import { RegisterComponent } from './auth/register/register.component';
 import { HomeComponent } from './core/home/home.component';
 import { CatalogComponent } from './pages/catalog/catalog.component';
 import { CreateComponent } from './pages/create/create.component';
+import { DetailsComponent } from './pages/details/details.component';
 
 const routes: Routes = [
   {
@@ -41,6 +42,13 @@ const routes: Routes = [
     component: CatalogComponent,
     data: {
       title: 'Catalog Page'
+    }
+  },
+  {
+    path: ':id',
+    component: DetailsComponent,
+    data: {
+      title: 'Game Details'
     }
   }
 ];
