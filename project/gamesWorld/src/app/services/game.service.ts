@@ -16,8 +16,13 @@ export class GameService {
 
   }
 
-  getAllGames(){
+  getAllGames() {
     return this.http.get<IGame[]>(`${API_URL}/games`);
+
+  }
+
+  getOneGame(id: string) {
+    return this.http.get<IGame>(`${API_URL}/games/${id}`, { withCredentials: true });
 
   }
 }
