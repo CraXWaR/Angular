@@ -17,8 +17,13 @@ const getOneGame = async (id) => {
     return await Game.findById(id).populate('owner');
 }
 
+const deleteGame = async (id) => {
+    return Game.findByIdAndDelete(id);
+}
+
 module.exports = {
     createGame,
     getAllGames,
-    getOneGame
+    getOneGame,
+    deleteGame
 }

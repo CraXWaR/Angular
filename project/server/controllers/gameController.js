@@ -1,4 +1,4 @@
-const { createGame, getAllGames, getOneGame } = require('../services/gameService');
+const { createGame, getAllGames, getOneGame, deleteGame } = require('../services/gameService');
 
 const router = require('express').Router();
 
@@ -23,6 +23,11 @@ router.get('/:id', async (req, res) => {
     const game = await getOneGame(req.params.id);
     return res.status(200).json(game);
     
-})
+});
+
+router.delete('/:id', async (req, res) => {
+    await deleteGame(req.params.id);
+    res.status(200).json('Game deleted!')
+});
 
 module.exports = router;
