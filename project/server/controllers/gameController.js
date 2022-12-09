@@ -20,13 +20,9 @@ router.get('/', async (req, res) => {
 });
 
 router.get('/:id', async (req, res) => {
-    try {
-        const id = req.params.id;
-        const game = await getOneGame(id);
-        res.status(200).json(game)
-    } catch (error) {
-        res.status(400).json('Invalid game ID');
-    }
-});
+    const game = await getOneGame(req.params.id);
+    return res.status(200).json(game);
+    
+})
 
 module.exports = router;

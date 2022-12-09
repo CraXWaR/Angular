@@ -13,7 +13,7 @@ const getAllGames = async () => {
 
 }
 
-const getOneGame = async () => {
+const getOneGame = async (id) => {
     return await Game.findById(id).populate('owner');
 }
 
