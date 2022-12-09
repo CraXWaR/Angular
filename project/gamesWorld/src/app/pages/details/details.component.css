@@ -18,7 +18,7 @@
 }
 
 .game-section {
-    margin-top: 90px;
+    margin-top: 40px;
     margin-bottom: auto;
     margin-left: 10%;
 }
@@ -46,7 +46,7 @@ h3 {
     display: block;
     margin-right: auto;
     width: 80%;
-    height: 405px;
+    height: 460px;
     overflow: hidden;
     overflow-y: scroll;
 }
