@@ -54,3 +54,38 @@ h3 {
 .game-description::-webkit-scrollbar {
     width: 100px;
 }
+
+.buttons {
+    position: absolute;
+    margin-left: 37%;
+    margin-top: 35%;
+}
+
+.btn-edit {
+    cursor: pointer;
+    width: 100px;
+    height: 35px;
+    margin-right: 10px;
+    padding-left: 12px;
+    padding-top: 12px;
+    padding-bottom: 30px;
+    padding-right: 10px;
+    border-radius: 10px;
+    background-color: #1c1c1c;
+    color: #9b9b9b;
+    font-size: 17px;
+}
+
+.btn-delete {
+    cursor: pointer;
+    width: 100px;
+    height: 35px;
+    padding-left: 12px;
+    padding-top: 12px;
+    padding-bottom: 30px;
+    padding-right: 10px;
+    border-radius: 10px;
+    background-color: #1c1c1c;
+    color: #9b9b9b;
+    font-size: 17px;
+}
