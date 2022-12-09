@@ -12,17 +12,42 @@
     font-family: 'Fira Sans', sans-serif;
 }
 
+.game-image {
+    margin-left: 100px;
+    margin-top: 90px;
+}
+
+.game-section {
+    margin-top: 90px;
+    margin-bottom: auto;
+    margin-right: 10px;
+    margin-left: 10%;
+}
+
 h1 {
     font-family: 'Fira Sans', sans-serif;
     color: #996019;
-    font-size: 30px;
-    position: absolute;
-    margin-left: 30%;
+    font-size: 40px;
+    margin-left: 25%;
+    margin-top: 10px;
+    margin-right: auto;
+}
+
+h3 {
+    font-family: 'Fira Sans', sans-serif;
+    color: #996019;
+    font-size: 20px;
+    margin-left: 300px;
     margin-top: 30px;
     margin-right: auto;
 }
 
-.game-image {
-    margin-left: 100px;
-    margin-top: 90px;
+.game-description {
+    font-family: 'Fira Sans', sans-serif;
+    color: #996019;
+    font-size: 20px;
+    margin-top: 30px;
+    margin-right: auto;
+    margin-left: 30px;
+    width: 80%;
 }

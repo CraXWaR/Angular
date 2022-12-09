@@ -1,8 +1,11 @@
 <div class="details-container">
-    <h1>{{game?.title}}</h1>
     <div class="game-image">
         <img src={{game?.imageUrl}} alt="no-img" width="400px" height="600px">
     </div>
 
-
+    <section class="game-section">
+        <h1>{{game?.title}}</h1>
+        <h3>{{game?.genre}}</h3>
+        <div class="game-description">{{game?.description}}</div>
+    </section>
 </div>
