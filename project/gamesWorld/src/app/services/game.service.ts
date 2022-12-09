@@ -26,4 +26,8 @@ export class GameService {
     return this.http.get<IGame>(`${API_URL}/games/${id}`, { withCredentials: true });
 
   }
+
+  deleteGame(id: string) {
+    return this.http.delete(`${API_URL}/games/${id}`)
+  }
 }

@@ -12,7 +12,7 @@ import { IGame } from 'src/app/shared/interfaces/gamgeInterface';
 export class DetailsComponent implements OnInit {
 
   game: IGame | undefined;
-  // token: string | null = localStorage.getItem('token')
+  token: string | null = localStorage.getItem('token')
   isAuthor: boolean = false;
 
   constructor(private gameService: GameService, private activatedRoute: ActivatedRoute, private userService: UserService, private router: Router) {
@@ -38,13 +38,26 @@ export class DetailsComponent implements OnInit {
   //   })
   // }
 
+
+  deleteGame() {
+    
+    const id = this.activatedRoute.snapshot.params['id'];
+    this.gameService.deleteGame(id).subscribe({
+      next: () => {
+        console.log('Game deleted!');
+        // this.router.navigate(['/']);
+      },
+      error: (err) => console.log(err)
+    })
+  }
+
   ngOnInit(): void {
     const id = this.activatedRoute.snapshot.params['id'];
     this.gameService.getOneGame(id).subscribe({
       next: (game) => {
         console.log(game);
         console.log(this.userService.user?._id);
-        
+
         this.game = game;
         //TODO FIX
         // if (this.userService.user?._id == game.owner?._id) {
@@ -53,13 +66,13 @@ export class DetailsComponent implements OnInit {
         //   this.isAuthor = false;
         // }
         console.log(this.isAuthor);
-        
+
       },
       error: (err) => {
         console.log(err);
         this.router.navigate(['/catalog'])
       }
-    })
+    });
   }
 
 }
