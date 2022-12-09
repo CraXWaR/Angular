@@ -1,4 +1,28 @@
-p {
-    color:  red;
-    font-size: 100px;
+.details-container {
+    display: flex;
+    color: #9b9b9b;
+    width: 70%;
+    height: 850px;
+    margin: auto;
+    margin-top: 70px;
+    background-color: #0f0f0f;
+    border: 1px solid black;
+    border-radius: 20px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    font-family: 'Fira Sans', sans-serif;
+}
+
+h1 {
+    font-family: 'Fira Sans', sans-serif;
+    color: #996019;
+    font-size: 30px;
+    position: absolute;
+    margin-left: 30%;
+    margin-top: 30px;
+    margin-right: auto;
+}
+
+.game-image {
+    margin-left: 100px;
+    margin-top: 90px;
 }

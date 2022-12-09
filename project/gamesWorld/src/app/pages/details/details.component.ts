@@ -13,7 +13,7 @@ export class DetailsComponent implements OnInit {
 
   game: IGame | undefined;
   // token: string | null = localStorage.getItem('token')
-  // isAuthor: boolean = false;
+  isAuthor: boolean = false;
 
   constructor(private gameService: GameService, private activatedRoute: ActivatedRoute, private userService: UserService, private router: Router) {
     // this.getGame();
@@ -43,11 +43,21 @@ export class DetailsComponent implements OnInit {
     this.gameService.getOneGame(id).subscribe({
       next: (game) => {
         console.log(game);
+        console.log(this.userService.user?._id);
+        
         this.game = game;
+        //TODO FIX
+        // if (this.userService.user?._id == game.owner?._id) {
+        //   this.isAuthor = true
+        // } else if (this.userService.user?._id != game.owner?._id) {
+        //   this.isAuthor = false;
+        // }
+        console.log(this.isAuthor);
+        
       },
       error: (err) => {
         console.log(err);
-        
+        this.router.navigate(['/catalog'])
       }
     })
   }
