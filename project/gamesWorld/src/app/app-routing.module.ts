@@ -6,6 +6,7 @@ import { HomeComponent } from './core/home/home.component';
 import { CatalogComponent } from './pages/catalog/catalog.component';
 import { CreateComponent } from './pages/create/create.component';
 import { DetailsComponent } from './pages/details/details.component';
+import { ProfileComponent } from './pages/profile/profile.component';
 
 const routes: Routes = [
   {
@@ -49,6 +50,13 @@ const routes: Routes = [
     component: DetailsComponent,
     data: {
       title: 'Game Details'
+    }
+  },
+  {
+    path: 'profile',
+    component: ProfileComponent,
+    data: {
+      title: 'Profile Page'
     }
   }
 ];
