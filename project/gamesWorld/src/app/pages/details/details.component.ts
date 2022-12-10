@@ -45,7 +45,7 @@ export class DetailsComponent implements OnInit {
     this.gameService.deleteGame(id).subscribe({
       next: () => {
         console.log('Game deleted!');
-        // this.router.navigate(['/']);
+        this.router.navigate(['/catalog']);
       },
       error: (err) => console.log(err)
     })
