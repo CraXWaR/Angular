@@ -18,12 +18,12 @@ const userSchema = new mongoose.Schema({
         required: true,
         minlength: [3, 'Password should have at least 3 characters!'],
     },
-    // games: [
-    //     {
-    //         type: mongoose.Types.ObjectId,
-    //         ref: 'Car',
-    //     }
-    // ]
+    games: [
+        {
+            type: mongoose.Types.ObjectId,
+            ref: 'Game',
+        }
+    ]
 });
 
 userSchema.pre('save', function (next) {

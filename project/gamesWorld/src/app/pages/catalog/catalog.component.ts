@@ -9,14 +9,27 @@ import { IGame } from 'src/app/shared/interfaces/gamgeInterface';
 })
 export class CatalogComponent implements OnInit {
 
-  games: IGame[] | undefined;
+  gamesList: IGame[] | null = [];
+  hasGames: boolean = false;
+
   constructor(private gameService: GameService) {
     this.getAllGames();
    }
  
    getAllGames(){
-    this.games = undefined;
-    this.gameService.getAllGames().subscribe((games) => this.games = games)
+    this.gameService.getAllGames().subscribe({
+      next: (games) => {
+        this.gamesList = games
+        if (this.gamesList.length > 0) {
+          this.hasGames = true;
+        }
+      },
+      error: (err) => {
+        console.log(err);
+        
+      }
+    })
+
    }
 
   ngOnInit(): void {

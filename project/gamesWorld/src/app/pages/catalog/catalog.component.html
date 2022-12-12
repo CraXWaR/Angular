@@ -1,8 +1,9 @@
 <h1>All Games</h1>
 <div class="catalog-container">
-    <section *ngIf="games">
+    <p class="noGames" *ngIf="!hasGames">No Games Added Yet!</p>
+    <section>
         <div class="all-games-div">
-            <ng-container *ngFor="let game of games">
+            <ng-container *ngFor="let game of gamesList">
                 <div class="game-div">
                     <h2>{{game.title}}</h2>
                     <img src={{game.imageUrl}} alt="Game picture" width="150px" height="200px">
@@ -15,6 +16,5 @@
                 </div>
             </ng-container>
         </div>
-    </section>
-    <p class="noGames" *ngIf="!games">No Games Added Yet!</p>
+    </section> 
 </div>

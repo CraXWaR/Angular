@@ -1,4 +1,47 @@
-p {
-    font-size: 100px;
-    color: red;
+.profile-container {
+    margin: auto;
+    margin-top: 50px;
+    width: 40%;
+    /* font-size: 100px; */
+    color: #996019;
+    border: 1px solid black;
+    border-radius: 20px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    font-family: 'Fira Sans', sans-serif;
+}
+
+.profile-img {
+    margin: auto;
+    margin-top: 20px;
+    width: 25%;
+}
+
+.profile-img img {
+    border-radius: 50%;
+}
+
+.username {
+    margin: auto;
+    margin-top: 20px;
+    width: 20%
+}
+
+.sections-rows {
+    display: flex;
+    width: 90%;
+    margin: auto;
+    background-color: white;
+}
+
+.column {
+    padding: 5px;
+    flex: 50%;
+}
+
+.ordered {
+    text-align: right;
+}
+
+.ordered-games {
+    /* text-align: left; */
 }
