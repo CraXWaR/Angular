@@ -30,4 +30,8 @@ export class GameService {
   deleteGame(id: string) {
     return this.http.delete(`${API_URL}/games/${id}`)
   }
+
+  editGame(id: string | undefined, data: {}) {
+    return this.http.put(`${API_URL}/games/${id}`, data)
+  }
 }

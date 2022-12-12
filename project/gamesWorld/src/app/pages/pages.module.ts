@@ -6,6 +6,7 @@ import { CatalogComponent } from './catalog/catalog.component';
 import { FormsModule } from '@angular/forms';
 import { DetailsComponent } from './details/details.component';
 import { ProfileComponent } from './profile/profile.component';
+import { EditComponent } from './edit/edit.component';
 
 
 
@@ -16,6 +17,7 @@ import { ProfileComponent } from './profile/profile.component';
     CatalogComponent,
     DetailsComponent,
     ProfileComponent,
+    EditComponent,
   ],
   imports: [
     CommonModule,

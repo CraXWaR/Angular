@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from 'src/app/services/auth.service';
 import { GameService } from 'src/app/services/game.service';
@@ -14,6 +15,7 @@ export class DetailsComponent implements OnInit {
   game: IGame | undefined;
   token: string | null = localStorage.getItem('token')
   isAuthor: boolean = false;
+  isEdit: boolean = false;
 
   constructor(private gameService: GameService, private activatedRoute: ActivatedRoute, private userService: UserService, private router: Router) {
     this.getGame();
