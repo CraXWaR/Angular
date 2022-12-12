@@ -16,27 +16,27 @@ export class DetailsComponent implements OnInit {
   isAuthor: boolean = false;
 
   constructor(private gameService: GameService, private activatedRoute: ActivatedRoute, private userService: UserService, private router: Router) {
-    // this.getGame();
+    this.getGame();
   }
 
-  // getGame(): void {
-  //   this.game = undefined;
-  //   const id = this.activatedRoute.snapshot.params['id'];
-  //   this.gameService.getOneGame(id).subscribe({
-  //     next: (game) => {
-  //       this.game = game
-  //       if(this.userService.user?._id == game.owner._id){
-  //         this.isAuthor = true
-  //       }else {
-  //         this.isAuthor = false;
-  //       }
-  //     },
-  //     error: (err) => {
-  //       console.log(err)
-  //       this.router.navigate(['**'])
-  //     }
-  //   })
-  // }
+  getGame(): void {
+    this.game = undefined;
+    const id = this.activatedRoute.snapshot.params['id'];
+    this.gameService.getOneGame(id).subscribe({
+      next: (game) => {
+        this.game = game
+        if(this.userService.user?._id == game.owner._id){
+          this.isAuthor = true
+        }else {
+          this.isAuthor = false;
+        }
+      },
+      error: (err) => {
+        console.log(err)
+        this.router.navigate(['**'])
+      }
+    })
+  }
 
 
   deleteGame() {
@@ -52,27 +52,27 @@ export class DetailsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    const id = this.activatedRoute.snapshot.params['id'];
-    this.gameService.getOneGame(id).subscribe({
-      next: (game) => {
-        console.log(game);
-        console.log(this.userService.user?._id);
+    // const id = this.activatedRoute.snapshot.params['id'];
+    // this.gameService.getOneGame(id).subscribe({
+    //   next: (game) => {
+    //     // console.log(game);
+    //     // console.log(this.userService.user?._id);
 
-        this.game = game;
-        //TODO FIX
-        // if (this.userService.user?._id == game.owner?._id) {
-        //   this.isAuthor = true
-        // } else if (this.userService.user?._id != game.owner?._id) {
-        //   this.isAuthor = false;
-        // }
-        console.log(this.isAuthor);
+    //     this.game = game;
 
-      },
-      error: (err) => {
-        console.log(err);
-        this.router.navigate(['/catalog'])
-      }
-    });
+    //     if (this.userService.user?._id == game.owner?._id) {
+    //       this.isAuthor = true
+    //     } else if (this.userService.user?._id != game.owner?._id) {
+    //       this.isAuthor = false;
+    //     }
+    //     console.log(this.userService.user);
+
+    //   },
+    //   error: (err) => {
+    //     console.log(err);
+    //     this.router.navigate(['/catalog'])
+    //   }
+    // });
   }
 
 }

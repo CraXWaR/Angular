@@ -13,7 +13,7 @@ const API_URL = environment.apiUrl;
 
 export class UserService implements OnDestroy {
 
-  user: null | IUser = null;
+  user: null | IUser | undefined ;
 
   constructor(private http: HttpClient, private router: Router) { }
 
@@ -41,6 +41,7 @@ export class UserService implements OnDestroy {
   }
 
   isLogged() {
+    //TODO FIX REFRESH BUG!
     if (localStorage.getItem('token')) {
       return true;
     } else {
