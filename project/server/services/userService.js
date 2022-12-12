@@ -57,7 +57,19 @@ const login = async (username, password) => {
     }
 }
 
-// createdGames
+//TODO add created games to array
+
+// const updateGamesOnUser = async (_id, gameId) => {
+//     try {
+//         const user = await User.findById(_id);
+//         let arrayOfGames = user.createdGames;
+//         console.log(arrayOfGames);
+//         arrayOfGames.push(gameId);
+//         await User.findByIdAndUpdate(_id, { createdGames })
+//     } catch (error) {
+//         throw new Error(error);
+//     }
+// }
 
 const logout = (token) => {
     blacklist.add(token)
@@ -68,4 +80,5 @@ module.exports = {
     register,
     createAccessToken,
     validateToken,
+    // updateGamesOnUser
 }
