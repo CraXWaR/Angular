@@ -5,7 +5,7 @@ const router = require('express').Router();
 
 router.post('/', async (req, res) => {
     const data = req.body;
-    const token =  jwtDecode(data.token)
+    const token = jwtDecode(data.token);
     try {
         const userId = token._id;
         const game = await createGame(data, userId);

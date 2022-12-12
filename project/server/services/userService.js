@@ -57,18 +57,15 @@ const login = async (username, password) => {
     }
 }
 
+// createdGames
+
 const logout = (token) => {
     blacklist.add(token)
 };
-
-const getUser = async (id) => {
-    return await User.findById(id);
-}
 
 module.exports = {
     login,
     register,
     createAccessToken,
     validateToken,
-    getUser
 }
