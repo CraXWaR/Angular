@@ -1,11 +1,13 @@
 const { createGame, getAllGames, getOneGame, deleteGame } = require('../services/gameService');
+const jwtDecode = require('jwt-decode');
 
 const router = require('express').Router();
 
 router.post('/', async (req, res) => {
     const data = req.body;
+    const token =  jwtDecode(data.token)
     try {
-        const userId = req?.user?._id;
+        const userId = token._id;
         const game = await createGame(data, userId);
         res.status(201).json(game);
     } catch (error) {

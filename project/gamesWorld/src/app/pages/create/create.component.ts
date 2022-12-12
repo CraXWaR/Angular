@@ -15,13 +15,17 @@ export class CreateComponent implements OnInit {
   constructor(private gameSerivce: GameService, private router: Router) { }
 
   createGame(form: NgForm) {
-    this.gameSerivce.createGame(form.value).subscribe({
+    let token = localStorage.getItem('token')
+    let value = form.value
+    value.token = token
+    
+    this.gameSerivce.createGame(value).subscribe({
       next: () => this.router.navigate(['/catalog']),
       error: (err) => {
         this.errors = err.error.error
       }
     })
-    console.log(form.value);
+    console.log(value);
     
   }
 
