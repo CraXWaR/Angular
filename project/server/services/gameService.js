@@ -22,9 +22,19 @@ const deleteGame = async (id) => {
     return Game.findByIdAndDelete(id);
 }
 
+const updateGame = async (id, data) => {
+    try {
+        return await Game.findByIdAndUpdate(id, { ...data });
+    } catch (error) {
+        throw new Error(error);
+
+    }
+}
+
 module.exports = {
     createGame,
     getAllGames,
     getOneGame,
-    deleteGame
+    deleteGame,
+    updateGame
 }

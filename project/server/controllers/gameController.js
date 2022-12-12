@@ -1,4 +1,4 @@
-const { createGame, getAllGames, getOneGame, deleteGame } = require('../services/gameService');
+const { createGame, getAllGames, getOneGame, deleteGame, updateGame } = require('../services/gameService');
 const jwtDecode = require('jwt-decode');
 const { updateGamesOnUser } = require('../services/userService');
 
@@ -33,5 +33,25 @@ router.delete('/:id', async (req, res) => {
     await deleteGame(req.params.id);
     res.status(200).json('Game deleted!')
 });
+
+router.put('/:id', async (req, res) => {
+    const id = req.params.id;
+    const data = req.body;
+    const token = jwtDecode(data.token);
+    const game = await getOneGame(id);
+
+    const userId = token._id
+
+    try {
+        if (userId == game.owner._id) {
+            await updateGame(id, data);
+            const editedGame = await getOneGame(id);
+            res.status(200).json(editedGame);
+        }
+    } catch (error) {
+        throw new Error('You have not created the game!')
+
+    }
+})
 
 module.exports = router;
