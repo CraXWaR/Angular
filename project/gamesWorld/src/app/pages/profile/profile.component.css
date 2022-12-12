@@ -2,7 +2,7 @@
     margin: auto;
     margin-top: 50px;
     width: 40%;
-    /* font-size: 100px; */
+    height: 900px;
     color: #996019;
     border: 1px solid black;
     border-radius: 20px;
@@ -20,16 +20,11 @@
     border-radius: 50%;
 }
 
-.username {
-    margin: auto;
-    margin-top: 20px;
-    width: 20%
-}
-
 .sections-rows {
     display: flex;
     width: 90%;
     margin: auto;
+    margin-top: 20px;
     background-color: white;
 }
 
@@ -42,6 +37,6 @@
     text-align: right;
 }
 
-.ordered-games {
-    /* text-align: left; */
-}
+/* .ordered-games {
+    text-align: left;
+} */

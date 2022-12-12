@@ -5,8 +5,8 @@ const router = require('express').Router();
 router.post('/', async (req, res) => {
     const data = req.body;
     try {
-        // data.owner = req.user.username;
-        const game = await createGame(data);
+        const userId = req?.user?._id;
+        const game = await createGame(data, userId);
         res.status(201).json(game);
     } catch (error) {
         res.status(400).json({ error: error.message })

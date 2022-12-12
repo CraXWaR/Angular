@@ -1,4 +1,5 @@
-const { register, login } = require('../services/userService');
+const User = require('../models/User');
+const { register, login, getUser } = require('../services/userService');
 
 const router = require('express').Router();
 
@@ -34,6 +35,5 @@ router.get('/logout', (req, res) => {
     res.status(204).end();
 
 });
-
 
 module.exports = router;

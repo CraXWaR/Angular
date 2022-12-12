@@ -18,7 +18,13 @@ const userSchema = new mongoose.Schema({
         required: true,
         minlength: [3, 'Password should have at least 3 characters!'],
     },
-    games: [
+    createdGames: [
+        {
+            type: mongoose.Types.ObjectId,
+            ref: 'Game',
+        }
+    ],
+    orderedGames: [
         {
             type: mongoose.Types.ObjectId,
             ref: 'Game',

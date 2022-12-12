@@ -3,23 +3,23 @@ const mongoose = require('mongoose');
 const gameSchema = new mongoose.Schema({
     title: {
         type: String,
-        // required: true,
-        // minlength: [3, 'You should have at least 3 characters!']
+        required: true,
+        minlength: [3, 'You should have at least 3 characters!']
     },
     genre: {
         type: String,
-        // required: true,
-        // minlength: [3, 'You should have at least 3 characters!']
+        required: true,
+        minlength: [3, 'You should have at least 3 characters!']
     },
     imageUrl: {
         type: String,
-        // required: true
+        required: true
     },
     description: {
         type: String,
-        // required: true,
-        // minlength: [10, 'Description should have at least 10 characters!'],
-        // maxlength: [100, 'Description shouldn\'t have more than 50 characters!']
+        required: true,
+        minlength: [10, 'Description should have at least 10 characters!'],
+        maxlength: [10000, 'Description shouldn\'t have more than 10000 characters!']
     },
     owner: {
         type: mongoose.Types.ObjectId,

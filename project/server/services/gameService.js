@@ -1,10 +1,11 @@
 const Game = require('../models/Game');
 
-const createGame = async (game) => {
+const createGame = async (game, id) => {
     try {
-        return await Game.create({...game})
+        game.owner = id;
+        return await Game.create({ ...game })
     } catch (error) {
-        return error
+        throw new Error(error)
     }
 };
 

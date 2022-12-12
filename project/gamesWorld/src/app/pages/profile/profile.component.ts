@@ -8,11 +8,7 @@ import { UserService } from 'src/app/services/auth.service';
 })
 export class ProfileComponent implements OnInit {
 
-  currentUser: any;
-
-  constructor(private userService: UserService) { 
-    this.currentUser = userService.user
-  }
+  constructor(private userService: UserService) { }
 
   ngOnInit(): void {
   }

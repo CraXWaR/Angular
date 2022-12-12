@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
-import { tap } from 'rxjs';
+import { BehaviorSubject, catchError, filter, tap, throwError } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { IUser } from '../shared/interfaces/userInterface';
 
