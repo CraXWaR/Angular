@@ -13,11 +13,11 @@ import { IGame } from 'src/app/shared/interfaces/gamgeInterface';
 export class DetailsComponent implements OnInit {
 
   game: IGame | undefined;
-  token: string | null = localStorage.getItem('token')
   isAuthor: boolean = false;
-  isEdit: boolean = false;
+  inEditMode: boolean = false;
+  token: string | null = localStorage.getItem('token')
 
-  constructor(private gameService: GameService, private activatedRoute: ActivatedRoute, private userService: UserService, private router: Router) {
+  constructor(private gameService: GameService, private authService: UserService, private activatedRoute: ActivatedRoute, private userService: UserService, private router: Router) {
     this.getGame();
   }
 
@@ -50,6 +50,23 @@ export class DetailsComponent implements OnInit {
         this.router.navigate(['/catalog']);
       },
       error: (err) => console.log(err)
+    })
+  }
+
+  editGame(form: NgForm) {
+    if (this.authService.user?._id != this.game?.owner._id || !this.token) {
+      this.router.navigate(['**'])
+    }
+    const id = this.game?._id;
+    this.gameService.editGame(id, form.value).subscribe({
+      next: (game) => {
+        this.game = game
+        this.inEditMode = false;
+      },
+      error: (err) => {
+        // this.errors = err.error?.error
+        console.log(err)
+      }
     })
   }
 

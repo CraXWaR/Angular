@@ -1,6 +1,6 @@
 const { createGame, getAllGames, getOneGame, deleteGame, updateGame } = require('../services/gameService');
 const jwtDecode = require('jwt-decode');
-const { updateGamesOnUser } = require('../services/userService');
+// const { updateGamesOnUser } = require('../services/userService');
 
 const router = require('express').Router();
 //TODO 
@@ -35,21 +35,19 @@ router.delete('/:id', async (req, res) => {
 });
 
 router.put('/:id', async (req, res) => {
-    const game = await getOneGame(req.params.id);
+    const id = req.params.id;
     const data = req.body;
-    const token = jwtDecode(data.token);
-    const userId = token._id;
-    // todo parse token
-    if (userId != game.owner._id) {
-        return res.status(403).json({ message: 'You cannot modify this record' })
-    }
+    const game = await getOneGame(id)
     try {
-        const result = await updateGame(req.params.id, req.body);
-        res.status(200).json(result)
-    } catch (err) {
-        console.log(err);
-        // const message = parseError(err)
-        res.status(400).json({ error: err.message })
+        if (req?.user._id == game.owner._id) {
+            await editBook(id, data)
+            const updatedGame = await getOneGame(id)
+            res.status(200).json(updatedGame)
+        } else {
+            throw new Error('You are not the owner!')
+        }
+    } catch (error) {
+        res.status(400).json({ error: error.message })
     }
 })
 

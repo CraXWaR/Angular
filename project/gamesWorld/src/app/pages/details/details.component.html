@@ -1,17 +1,50 @@
-<div class="details-container">
-    <div class="game-image">
-        <img src={{game?.imageUrl}} alt="no-img" width="400px" height="600px">
-    </div>
+<ng-container *ngIf="!inEditMode">
+    <div class="details-container">
+        <div class="game-image">
+            <img src={{game?.imageUrl}} alt="no-img" width="400px" height="600px">
+        </div>
 
-    <section class="game-section">
-        <h1>{{game?.title}}</h1>
-        <h3>{{game?.genre}}</h3>
-        <div class="game-description">{{game?.description}}</div>
-        <div class="game-price">Price: ${{game?.price}}</div>
+        <section class="game-section">
+            <h1>{{game?.title}}</h1>
+            <h3>{{game?.genre}}</h3>
+            <div class="game-description">{{game?.description}}</div>
+            <div class="game-price">Price: ${{game?.price}}</div>
+        </section>
+
+        <div class="buttons" *ngIf="isAuthor">
+            <button class="btn-edit" (click)="inEditMode = true">Edit</button>
+            <button class="btn-delete" (click)="deleteGame()">Delete</button>
+        </div>
+    </div>
+</ng-container>
+
+<ng-container *ngIf="inEditMode">
+    <section class="edit-container">
+        <form #form="ngForm" (ngSubmit)="editGame(form)" class="edit-form">
+            <h1>Edit Game</h1>
+
+            <label for="gameName"></label>
+            <input type="text" id="title" placeholder="World of Warcraft" name="title" #title="ngModel" ngModel>
+
+            <label for="genre"></label>
+            <input type="text" id="genre" placeholder="MMORPG" name="genre" #genre="ngModel" ngModel>
+
+            <label for="price"></label>
+            <input type="number" id="price" placeholder="$5" name="price" #price="ngModel" ngModel>
+
+            <label for="genre"></label>
+            <input type="text" id="imageUrl" placeholder="https://..." name="imageUrl" #title="ngModel" ngModel>
+
+            <label for="gameDescription"></label>
+            <textarea id="gameDescription"
+                placeholder="World of Warcraft (WoW) is a massively multiplayer online role-playing game (MMORPG) released in 2004 by Blizzard Entertainment."
+                name="description" cols="30" rows="10" #description="ngModel" ngModel></textarea>
+
+            <div>
+                <button class="btn-create">Edit game</button>
+            </div>
+
+        </form>
     </section>
 
-    <div class="buttons" *ngIf="isAuthor">
-        <button class="btn-edit" [routerLink]="['/games/edit', game?._id]">Edit</button>
-        <button class="btn-delete" (click)="deleteGame()">Delete</button>
-    </div>
-</div>
+</ng-container>

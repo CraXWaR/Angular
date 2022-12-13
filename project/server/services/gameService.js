@@ -15,7 +15,12 @@ const getAllGames = async () => {
 }
 
 const getOneGame = async (id) => {
-    return await Game.findById(id).populate('owner');
+    try {
+        console.log(id);
+        return await Game.findById(id).populate('owner');
+    } catch (error) {
+        console.log(error);
+    }
 }
 
 const deleteGame = async (id) => {
@@ -23,15 +28,11 @@ const deleteGame = async (id) => {
 }
 
 const updateGame = async (id, data) => {
-    const existing = await Game.findById(id);
-
-    existing.title = data.title;
-    existing.genre = data.genre;
-    existing.price = data.price;
-    existing.imageUrl = data.imageUrl;
-    existing.description = data.description;
-
-    return existing.save()
+    try {
+        return await Game.findByIdAndUpdate(id, { ...data }, { runValidators: true })
+    } catch (error) {
+        return error
+    }
 }
 
 module.exports = {
