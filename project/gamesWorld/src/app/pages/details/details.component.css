@@ -51,6 +51,13 @@ h3 {
     overflow-y: scroll;
 }
 
+.game-price {
+    color: #996019;
+    font-size: 20px;
+    display: block;
+    margin-right: auto;
+}
+
 .game-description::-webkit-scrollbar {
     width: 100px;
 }
