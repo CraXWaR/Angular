@@ -21,6 +21,12 @@ const gameSchema = new mongoose.Schema({
         minlength: [10, 'Description should have at least 10 characters!'],
         maxlength: [10000, 'Description shouldn\'t have more than 10000 characters!']
     },
+    price: {
+        type: Number,
+        required: true,
+        min: [1, 'Price too low'],
+        max: [100, 'Price too high']
+    },
     owner: {
         type: mongoose.Types.ObjectId,
         ref: 'User',

@@ -6,5 +6,6 @@ export interface IGame {
     imageUrl: string,
     description: string,
     _id: string,
+    price: Number,
     owner: IUser
 }
