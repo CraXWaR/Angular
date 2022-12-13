@@ -7,6 +7,7 @@ import { FormsModule } from '@angular/forms';
 import { DetailsComponent } from './details/details.component';
 import { ProfileComponent } from './profile/profile.component';
 import { EditComponent } from './edit/edit.component';
+import { ErrorComponent } from './error/error.component';
 
 
 
@@ -18,6 +19,7 @@ import { EditComponent } from './edit/edit.component';
     DetailsComponent,
     ProfileComponent,
     EditComponent,
+    ErrorComponent,
   ],
   imports: [
     CommonModule,
