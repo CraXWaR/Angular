@@ -16,7 +16,6 @@ const getAllGames = async () => {
 
 const getOneGame = async (id) => {
     try {
-        console.log(id);
         return await Game.findById(id).populate('owner');
     } catch (error) {
         console.log(error);

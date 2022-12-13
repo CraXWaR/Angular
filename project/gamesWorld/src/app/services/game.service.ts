@@ -32,6 +32,6 @@ export class GameService {
   }
 
   editGame(id: string | undefined, data: {}){
-    return this.http.put<IGame>(`${API_URL}/books/${id}`, data)
+    return this.http.put<IGame>(`${API_URL}/games/${id}`, data)
   }
 }

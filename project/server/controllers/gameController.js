@@ -40,7 +40,7 @@ router.put('/:id', async (req, res) => {
     const game = await getOneGame(id)
     try {
         if (req?.user._id == game.owner._id) {
-            await editBook(id, data)
+            await updateGame(id, data)
             const updatedGame = await getOneGame(id)
             res.status(200).json(updatedGame)
         } else {
