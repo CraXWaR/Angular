@@ -23,12 +23,15 @@ const deleteGame = async (id) => {
 }
 
 const updateGame = async (id, data) => {
-    try {
-        return await Game.findByIdAndUpdate(id, { ...data });
-    } catch (error) {
-        throw new Error(error);
+    const existing = await Game.findById(id);
 
-    }
+    existing.title = data.title;
+    existing.genre = data.genre;
+    existing.price = data.price;
+    existing.imageUrl = data.imageUrl;
+    existing.description = data.description;
+
+    return existing.save()
 }
 
 module.exports = {

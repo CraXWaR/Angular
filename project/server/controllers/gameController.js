@@ -35,22 +35,21 @@ router.delete('/:id', async (req, res) => {
 });
 
 router.put('/:id', async (req, res) => {
-    const id = req.params.id;
+    const game = await getOneGame(req.params.id);
     const data = req.body;
     const token = jwtDecode(data.token);
-    const game = await getOneGame(id);
-
-    const userId = token._id
-
+    const userId = token._id;
+    // todo parse token
+    if (userId != game.owner._id) {
+        return res.status(403).json({ message: 'You cannot modify this record' })
+    }
     try {
-        if (userId == game.owner._id) {
-            await updateGame(id, data);
-            const editedGame = await getOneGame(id);
-            res.status(200).json(editedGame);
-        }
-    } catch (error) {
-        throw new Error('You have not created the game!')
-
+        const result = await updateGame(req.params.id, req.body);
+        res.status(200).json(result)
+    } catch (err) {
+        console.log(err);
+        // const message = parseError(err)
+        res.status(400).json({ error: err.message })
     }
 })
 

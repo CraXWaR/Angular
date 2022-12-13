@@ -1,23 +1,23 @@
 <section class="edit-container">
-    <form class="register-form">
+    <form [formGroup]="editForm" (ngSubmit)="editHandler()" class="edit-form">
         <h1>Edit Game</h1>
 
         <label for="gameName"></label>
-        <input type="text" id="title" placeholder="World of Warcraft" name="title" #title="ngModel" ngModel>
+        <input type="text" id="title" placeholder="World of Warcraft" name="title" formControlName="title">
 
         <label for="genre"></label>
-        <input type="text" id="genre" placeholder="MMORPG" name="genre" #genre="ngModel" ngModel>
+        <input type="text" id="genre" placeholder="MMORPG" name="genre" formControlName="genre">
 
         <label for="price"></label>
-        <input type="number" id="price" placeholder="$5" name="price" #price="ngModel" ngModel>
+        <input type="number" id="price" placeholder="$5" name="price" formControlName="price">
 
         <label for="genre"></label>
-        <input type="text" id="imageUrl" placeholder="https://..." name="imageUrl" #imageUrl="ngModel" ngModel>
+        <input type="text" id="imageUrl" placeholder="https://..." name="imageUrl" formControlName="imageUrl">
 
         <label for="gameDescription"></label>
         <textarea id="gameDescription"
             placeholder="World of Warcraft (WoW) is a massively multiplayer online role-playing game (MMORPG) released in 2004 by Blizzard Entertainment."
-            name="description" cols="30" rows="10" #description="ngModel" ngModel></textarea>
+            name="description" cols="30" rows="10" formControlName="description"></textarea>
 
         <div>
             <button class="btn-create">Edit game</button>
