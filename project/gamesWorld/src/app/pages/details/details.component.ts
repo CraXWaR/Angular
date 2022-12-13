@@ -58,7 +58,12 @@ export class DetailsComponent implements OnInit {
       this.router.navigate(['**'])
     }
     const id = this.game?._id;
-    this.gameService.editGame(id, form.value).subscribe({
+
+    let token = localStorage.getItem('token');
+    let value = form.value;
+    value.token = token;
+    
+    this.gameService.editGame(id, value).subscribe({
       next: (game) => {
         this.game = game
         this.inEditMode = false;

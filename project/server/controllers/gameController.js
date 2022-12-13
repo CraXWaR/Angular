@@ -37,9 +37,12 @@ router.delete('/:id', async (req, res) => {
 router.put('/:id', async (req, res) => {
     const id = req.params.id;
     const data = req.body;
-    const game = await getOneGame(id)
+    const game = await getOneGame(id);
+    // console.log(req?.user?._id);
     try {
-        if (req?.user._id == game.owner._id) {
+        const token = jwtDecode(data.token);
+        const userId = token._id;
+        if (userId == game.owner._id) {
             await updateGame(id, data)
             const updatedGame = await getOneGame(id)
             res.status(200).json(updatedGame)
@@ -47,6 +50,8 @@ router.put('/:id', async (req, res) => {
             throw new Error('You are not the owner!')
         }
     } catch (error) {
+        console.log(data);
+
         res.status(400).json({ error: error.message })
     }
 })
