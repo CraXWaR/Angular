@@ -1,4 +1,4 @@
-const { createGame, getAllGames, getOneGame, deleteGame, updateGame } = require('../services/gameService');
+const { createGame, getAllGames, getOneGame, deleteGame, updateGame, getUserGames } = require('../services/gameService');
 const jwtDecode = require('jwt-decode');
 // const { updateGamesOnUser } = require('../services/userService');
 
@@ -53,6 +53,20 @@ router.put('/:id', async (req, res) => {
         console.log(data);
 
         res.status(400).json({ error: error.message })
+    }
+});
+
+router.get('/mygames', async (req, res) => {
+    const data = req.body;
+    const token = jwtDecode(data.token);
+    
+    try {
+        const userId = token._id;
+        const games = await getUserGames(userId);
+        res.status(200).json(games);
+        res.end();
+    } catch (error) {
+        console.log(error);
     }
 })
 

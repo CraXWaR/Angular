@@ -34,10 +34,15 @@ const updateGame = async (id, data) => {
     }
 }
 
+const getUserGames = async (_id) => {
+    return await Game.find({ owner: _id });
+}
+
 module.exports = {
     createGame,
     getAllGames,
     getOneGame,
     deleteGame,
-    updateGame
+    updateGame,
+    getUserGames
 }

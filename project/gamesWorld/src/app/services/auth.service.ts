@@ -3,6 +3,7 @@ import { Injectable, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { tap } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { IGame } from '../shared/interfaces/gamgeInterface';
 import { IUser } from '../shared/interfaces/userInterface';
 
 const API_URL = environment.apiUrl;
@@ -47,6 +48,10 @@ export class UserService implements OnDestroy {
     } else {
       return false;
     }
+  }
+
+  getProfileGames() {
+    return this.http.get<IGame[]>(`${API_URL}/games/mygames`);
   }
 
   ngOnDestroy(): void {
