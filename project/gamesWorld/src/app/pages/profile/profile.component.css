@@ -20,6 +20,14 @@
     border-radius: 50%;
 }
 
+.username {
+    text-align: center;
+}
+
+.email {
+    text-align: center;
+}
+
 .sections-rows {
     display: flex;
     width: 90%;
