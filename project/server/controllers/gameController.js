@@ -1,6 +1,6 @@
 const { createGame, getAllGames, getOneGame, deleteGame, updateGame, getUserGames } = require('../services/gameService');
 const jwtDecode = require('jwt-decode');
-// const { updateGamesOnUser } = require('../services/userService');
+const { updateGamesOnUser } = require('../services/userService');
 
 const router = require('express').Router();
 //TODO 
@@ -10,7 +10,7 @@ router.post('/', async (req, res) => {
     try {
         const userId = token._id;
         const game = await createGame(data, userId);
-        // await updateGamesOnUser(userId, game._id);
+        await updateGamesOnUser(userId, game._id);
         res.status(201).json(game);
     } catch (error) {
         res.status(400).json({ error: error.message })
@@ -57,17 +57,15 @@ router.put('/:id', async (req, res) => {
 });
 
 router.get('/mygames', async (req, res) => {
+    const _id = req?.user?._id;  
     const data = req.body;
-    const token = jwtDecode(data.token);
-    
-    try {
-        const userId = token._id;
-        const games = await getUserGames(userId);
-        res.status(200).json(games);
-        res.end();
-    } catch (error) {
-        console.log(error);
-    }
+    console.log(data);
+    // const token = jwtDecode(data.token);
+    // const userId = token._id;
+    const games = await getUserGames(_id);
+    res.status(200).json(games);
+    res.end();
+
 })
 
 module.exports = router;

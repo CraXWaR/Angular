@@ -50,6 +50,10 @@ export class UserService implements OnDestroy {
     }
   }
 
+  getProfile(token: {}) {
+    return this.http.post<IUser>(`${API_URL}/profile`, token);
+  }
+
   getProfileGames() {
     return this.http.get<IGame[]>(`${API_URL}/games/mygames`);
   }

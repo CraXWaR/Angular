@@ -57,18 +57,17 @@ const login = async (username, password) => {
     }
 }
 //TODO FIX ADD BUG
-// const updateGamesOnUser = async (_id, gameId) => {
-//     try {
-//         const user = await User.findById(_id);
-//         let arrayOfGames = user.createdGames;
-        
-//         arrayOfGames.push(gameId);
-//         console.log(user.createdGames);
-//         await User.findByIdAndUpdate(_id, { arrayOfGames })
-//     } catch (error) {
-//         throw new Error(error);
-//     }
-// }
+const updateGamesOnUser = async (_id, gameId) => {
+    try {
+        const user = await User.findById(_id);
+        let arrayOfGames = user.createdGames;
+        arrayOfGames.push(gameId);
+        console.log(user);
+        await User.findByIdAndUpdate(_id, { games: arrayOfGames })
+    } catch (error) {
+        throw new Error(error);
+    }
+}
 
 const logout = (token) => {
     blacklist.add(token)
@@ -79,5 +78,5 @@ module.exports = {
     register,
     createAccessToken,
     validateToken,
-    // updateGamesOnUser
+    updateGamesOnUser
 }

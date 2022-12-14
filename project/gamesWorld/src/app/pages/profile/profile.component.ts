@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from 'src/app/services/auth.service';
+import { IGame } from 'src/app/shared/interfaces/gamgeInterface';
+import { IUser } from 'src/app/shared/interfaces/userInterface';
 
 @Component({
   selector: 'app-profile',
@@ -7,8 +10,43 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfileComponent implements OnInit {
 
-  constructor() { }
-  
+  user: IUser | undefined;
+  games: IGame[] | any = null;
+  isEmpty: boolean = false;
+
+  constructor(private userService: UserService) {
+    this.getUserProfile();
+   }
+   
+   getUserProfile() {
+    let token = localStorage.getItem('token');
+    
+    this.userService.getProfile({token}).subscribe({
+      next: (user) => {
+        this.user = user
+      },
+      error: (err) => {
+        console.log(err);
+        
+      }
+    });
+   }
+
+  // getMyGames() {
+  //   this.userService.getProfileGames().subscribe({
+  //     next: (v) => {
+  //       this.games = v
+  //       if (v.length == 0) {
+  //         this.isEmpty = true;
+  //       }
+  //     },
+  //     error: (err) => {
+  //       console.log(err);
+        
+  //     }
+  //   })
+  // }
+
   ngOnInit(): void {
   }
 

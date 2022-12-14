@@ -1,5 +1,6 @@
 const User = require('../models/User');
 const { register, login } = require('../services/userService');
+const jwtDecode = require('jwt-decode');
 
 const router = require('express').Router();
 
@@ -16,7 +17,7 @@ router.post('/register', async (req, res) => {
 
     }
     res.end();
-})
+});
 
 router.post('/login', async (req, res) => {
     const { username, password } = req.body;
@@ -29,7 +30,21 @@ router.post('/login', async (req, res) => {
 
     }
     res.end()
-})
+});
+
+router.post('/profile', async (req, res) => {
+    const data = req.body;
+    const token = jwtDecode(data.token);
+    try {
+        const username = token.username;
+        const email = token.email;
+   
+        res.status(200).json({"username": username, "email": email});
+        res.end();
+    } catch (error) {
+        console.log(error);
+    }
+});
 
 router.get('/logout', (req, res) => {
     res.status(204).end();
