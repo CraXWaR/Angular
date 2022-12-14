@@ -16,6 +16,7 @@ export class ProfileComponent implements OnInit {
 
   constructor(private userService: UserService) {
     this.getUserProfile();
+    this.getMyGames();
    }
    
    getUserProfile() {
@@ -32,20 +33,20 @@ export class ProfileComponent implements OnInit {
     });
    }
 
-  // getMyGames() {
-  //   this.userService.getProfileGames().subscribe({
-  //     next: (v) => {
-  //       this.games = v
-  //       if (v.length == 0) {
-  //         this.isEmpty = true;
-  //       }
-  //     },
-  //     error: (err) => {
-  //       console.log(err);
+  getMyGames() {
+    this.userService.getProfileGames().subscribe({
+      next: (v) => {
+        this.games = v
+        if (v.length == 0) {
+          this.isEmpty = true;
+        }
+      },
+      error: (err) => {
+        console.log(err);
         
-  //     }
-  //   })
-  // }
+      }
+    })
+  }
 
   ngOnInit(): void {
   }

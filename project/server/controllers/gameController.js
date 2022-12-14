@@ -59,10 +59,10 @@ router.put('/:id', async (req, res) => {
 router.get('/mygames', async (req, res) => {
     const _id = req?.user?._id;  
     const data = req.body;
-    console.log(data);
-    // const token = jwtDecode(data.token);
-    // const userId = token._id;
-    const games = await getUserGames(_id);
+    // console.log(data);
+    const token = jwtDecode(data.token);
+    const userId = token._id;
+    const games = await getUserGames(userId);
     res.status(200).json(games);
     res.end();
 

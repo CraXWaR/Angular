@@ -24,7 +24,7 @@ const userSchema = new mongoose.Schema({
             ref: 'Game',
         }
     ],
-    orderedGames: [
+    wishedGames: [
         {
             type: mongoose.Types.ObjectId,
             ref: 'Game',
