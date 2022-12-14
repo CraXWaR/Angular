@@ -97,6 +97,20 @@ h3 {
     font-size: 17px;
 }
 
+.btn-wish {
+    cursor: pointer;
+    width: 100px;
+    height: 35px;
+    padding-left: 12px;
+    padding-top: 12px;
+    padding-bottom: 30px;
+    padding-right: 10px;
+    border-radius: 10px;
+    background-color: #1c1c1c;
+    color: #9b9b9b;
+    font-size: 17px;
+}
+
 /* EDIT */
 
 .edit-container {

@@ -75,6 +75,11 @@ export class DetailsComponent implements OnInit {
     })
   }
 
+  wishGame() {
+    console.log('wished');
+    
+  }
+
   ngOnInit(): void {
     // const id = this.activatedRoute.snapshot.params['id'];
     // this.gameService.getOneGame(id).subscribe({

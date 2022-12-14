@@ -11,6 +11,10 @@
             <div class="game-price">Price: ${{game?.price}}</div>
         </section>
 
+        <div class="buttons" *ngIf="!isAuthor">
+            <button class="btn-wish" (click)="wishGame()">Wish</button>
+        </div>
+
         <div class="buttons" *ngIf="isAuthor">
             <button class="btn-edit" (click)="inEditMode = true">Edit</button>
             <button class="btn-delete" (click)="deleteGame()">Delete</button>
