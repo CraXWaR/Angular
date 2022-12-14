@@ -15,6 +15,7 @@ export class DetailsComponent implements OnInit {
   game: IGame | undefined;
   isAuthor: boolean = false;
   inEditMode: boolean = false;
+  isWished: boolean = false;
   token: string | null = localStorage.getItem('token')
 
   constructor(private gameService: GameService, private authService: UserService, private activatedRoute: ActivatedRoute, private userService: UserService, private router: Router) {
@@ -77,7 +78,7 @@ export class DetailsComponent implements OnInit {
 
   wishGame() {
     console.log('wished');
-    
+    this.isWished = true
   }
 
   ngOnInit(): void {

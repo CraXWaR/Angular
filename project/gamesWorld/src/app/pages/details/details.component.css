@@ -111,6 +111,13 @@ h3 {
     font-size: 17px;
 }
 
+.wished-game {
+    color: #996019;
+    font-size: 20px;
+    display: block;
+    margin-right: auto;
+}
+
 /* EDIT */
 
 .edit-container {
