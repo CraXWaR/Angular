@@ -6,9 +6,9 @@ const router = require('express').Router();
 
 
 router.post('/register', async (req, res) => {
-    const { username, email, fullName, password, userInfo } = req.body;
+    const { username, email, fullName, userInfo, password } = req.body;
     try {
-        const user = await register(username, email, fullName, password, userInfo);
+        const user = await register(username, email, fullName, userInfo, password);
         res.status(201).json(user);
 
     } catch (error) {
@@ -24,7 +24,7 @@ router.post('/login', async (req, res) => {
     try {
         const user = await login(username, password);
         res.status(201).json(user);
-        
+
     } catch (error) {
         res.status(400).json({ error: error.message });
 
@@ -35,11 +35,14 @@ router.post('/login', async (req, res) => {
 router.post('/profile', (req, res) => {
     const data = req.body;
     const token = jwtDecode(data.token);
+    console.log(token);
     try {
         const username = token.username;
         const email = token.email;
-   
-        res.status(200).json({"username": username, "email": email});
+        const fullName = token.fullName;
+        const userInfo = token.userInfo;
+
+        res.status(200).json({ "username": username, "email": email, "fullName": fullName, "userInfo": userInfo });
         res.end();
     } catch (error) {
         console.log(error);

@@ -28,23 +28,10 @@
     text-align: center;
 }
 
-.sections-rows {
-    display: flex;
-    width: 90%;
-    margin: auto;
-    margin-top: 20px;
-    background-color: white;
+.fullName {
+    text-align: center;
 }
 
-.column {
-    padding: 5px;
-    flex: 50%;
+.userInfo {
+    text-align: center;
 }
-
-.ordered {
-    text-align: right;
-}
-
-/* .ordered-games {
-    text-align: left;
-} */

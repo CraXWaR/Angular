@@ -53,9 +53,9 @@ export class UserService implements OnDestroy {
     return this.http.post<IUser>(`${API_URL}/profile`, token);
   }
 
-  getProfileGames(token: {}) {
-    return this.http.get<IGame[]>(`${API_URL}/games/mygames`, token);
-  }
+  // getProfileGames(token: {}) {
+  //   return this.http.get<IGame[]>(`${API_URL}/games/mygames`, token);
+  // }
 
   ngOnDestroy(): void {
   }
