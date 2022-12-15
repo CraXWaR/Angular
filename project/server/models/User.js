@@ -22,7 +22,7 @@ const userSchema = new mongoose.Schema({
     userInfo: {
         type: String,
         minlength: [10, 'Personal information should have at least 10 characters!'],
-        maxlength: [200, 'Personal information cannot have more than 200 characters!'],
+        maxlength: [10000, 'Personal information cannot have more than 10000 characters!'],
     },
     password: {
         type: String,
