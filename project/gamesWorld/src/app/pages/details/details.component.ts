@@ -87,27 +87,6 @@ export class DetailsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // const id = this.activatedRoute.snapshot.params['id'];
-    // this.gameService.getOneGame(id).subscribe({
-    //   next: (game) => {
-    //     // console.log(game);
-    //     // console.log(this.userService.user?._id);
-
-    //     this.game = game;
-
-    //     if (this.userService.user?._id == game.owner?._id) {
-    //       this.isAuthor = true
-    //     } else if (this.userService.user?._id != game.owner?._id) {
-    //       this.isAuthor = false;
-    //     }
-    //     console.log(this.userService.user);
-
-    //   },
-    //   error: (err) => {
-    //     console.log(err);
-    //     this.router.navigate(['/catalog'])
-    //   }
-    // });
   }
 
 }

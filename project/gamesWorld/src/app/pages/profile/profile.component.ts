@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/services/auth.service';
-import { IGame } from 'src/app/shared/interfaces/gamgeInterface';
 import { IUser } from 'src/app/shared/interfaces/userInterface';
 
 @Component({
@@ -11,13 +10,10 @@ import { IUser } from 'src/app/shared/interfaces/userInterface';
 export class ProfileComponent implements OnInit {
 
   user: IUser | undefined;
-  games: IGame[] | any = null;
-  isEmpty: boolean = false;
   inEditMode: boolean = false;
 
   constructor(private userService: UserService) {
     this.getUserProfile();
-    // this.getMyGames();
   }
 
   getUserProfile() {
@@ -38,23 +34,6 @@ export class ProfileComponent implements OnInit {
     console.log('editing');
     
   }
-
-  // getMyGames() {
-  //   let token = localStorage.getItem('token');
-    
-  //   this.userService.getProfileGames({ token }).subscribe({
-  //     next: (value) => {
-  //       this.games = value
-  //       if (value.length == 0) {
-  //         this.isEmpty = true;
-  //       }
-  //     },
-  //     error: (err) => {
-  //       console.log(err);
-
-  //     }
-  //   })
-  // }
 
   ngOnInit(): void {
   }

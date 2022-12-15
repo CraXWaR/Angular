@@ -61,16 +61,13 @@ const login = async (username, password) => {
     }
 }
 
-// const updateGamesOnUser = async (_id, bookId) => {
-//     try {
-//         const user = await User.findById(_id);
-//         let array = user.createdGames
-//         array.push(bookId)
-//         await User.findByIdAndUpdate(_id, { createdGames: array })
-//     } catch (error) {
-//         throw new Error(error)
-//     }
-// }
+const updateUser = async (id, data) => {
+    try {
+        return await User.findByIdAndUpdate(id, { ...data }, { runValidators: true })
+    } catch (error) {
+        return error
+    }
+}
 
 const logout = (token) => {
     blacklist.add(token)
@@ -81,5 +78,5 @@ module.exports = {
     register,
     createAccessToken,
     validateToken,
-    // updateGamesOnUser
+    updateUser
 }

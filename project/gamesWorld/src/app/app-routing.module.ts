@@ -6,7 +6,6 @@ import { HomeComponent } from './core/home/home.component';
 import { CatalogComponent } from './pages/catalog/catalog.component';
 import { CreateComponent } from './pages/create/create.component';
 import { DetailsComponent } from './pages/details/details.component';
-import { EditComponent } from './pages/edit/edit.component';
 import { ErrorComponent } from './pages/error/error.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 
@@ -52,13 +51,6 @@ const routes: Routes = [
     component: DetailsComponent,
     data: {
       title: 'Game Details'
-    }
-  },
-  {
-    path: 'games/edit/:id',
-    component: EditComponent,
-    data: {
-      title: 'Game Edit'
     }
   },
   {

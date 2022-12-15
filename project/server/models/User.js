@@ -30,18 +30,6 @@ const userSchema = new mongoose.Schema({
         minlength: [3, 'Password should have at least 3 characters!'],
         maxlength: [20, 'Password cannot have more than 20 characters!'],
     }
-    // createdGames: [
-    //     {
-    //         type: mongoose.Types.ObjectId,
-    //         ref: 'Game',
-    //     }
-    // ],
-    // wishedGames: [
-    //     {
-    //         type: mongoose.Types.ObjectId,
-    //         ref: 'Game',
-    //     }
-    // ]
 });
 
 userSchema.pre('save', function (next) {

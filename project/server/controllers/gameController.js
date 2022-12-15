@@ -37,7 +37,7 @@ router.put('/:id', async (req, res) => {
     const id = req.params.id;
     const data = req.body;
     const game = await getOneGame(id);
-    // console.log(req?.user?._id);
+   
     try {
         const token = jwtDecode(data.token);
         const userId = token._id;
@@ -56,11 +56,11 @@ router.put('/:id', async (req, res) => {
 });
 
 router.post('/mygames', async (req, res) => {
-    // const _id = req?.user?._id;  
     const data = req.body;
     const token = jwtDecode(data.token);
     const userId = token._id;
     const games = await getUserGames(userId);
+    
     res.status(200).json(games);
     res.end();
 
