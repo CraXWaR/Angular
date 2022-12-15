@@ -16,7 +16,7 @@ export class ProfileComponent implements OnInit {
 
   constructor(private userService: UserService) {
     this.getUserProfile();
-    this.getMyGames();
+    // this.getMyGames();
   }
 
   getUserProfile() {
@@ -33,22 +33,22 @@ export class ProfileComponent implements OnInit {
     });
   }
 
-  getMyGames() {
-    let token = localStorage.getItem('token');
+  // getMyGames() {
+  //   let token = localStorage.getItem('token');
     
-    this.userService.getProfileGames({ token }).subscribe({
-      next: (value) => {
-        this.games = value
-        if (value.length == 0) {
-          this.isEmpty = true;
-        }
-      },
-      error: (err) => {
-        console.log(err);
+  //   this.userService.getProfileGames({ token }).subscribe({
+  //     next: (value) => {
+  //       this.games = value
+  //       if (value.length == 0) {
+  //         this.isEmpty = true;
+  //       }
+  //     },
+  //     error: (err) => {
+  //       console.log(err);
 
-      }
-    })
-  }
+  //     }
+  //   })
+  // }
 
   ngOnInit(): void {
   }

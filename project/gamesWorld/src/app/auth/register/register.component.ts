@@ -19,9 +19,9 @@ export class RegisterComponent implements OnInit {
       username: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(10)]],
       email: ['', [Validators.required, emailValidator]],
       fullName: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(30)]],
+      personalInfo: [['', [Validators.required, Validators.minLength(10), Validators.maxLength(200)]]],
       password: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(20)]],
-      rePassword: ['', [Validators.required, passwordValidator]],
-      personalInfo: [['', [Validators.required, Validators.minLength(10), Validators.maxLength(200)]]]
+      rePassword: ['', [Validators.required, passwordValidator]]
     });
   }
 
@@ -29,7 +29,7 @@ export class RegisterComponent implements OnInit {
     this.userService.register(this.form.value).subscribe({
       next: () => this.router.navigate(['/']),
       error: (err) => {
-        this.errors = err.error.error
+        this.errors = err.error?.error
       }
     })
   }
