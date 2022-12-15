@@ -13,6 +13,7 @@ export class ProfileComponent implements OnInit {
   user: IUser | undefined;
   games: IGame[] | any = null;
   isEmpty: boolean = false;
+  inEditMode: boolean = false;
 
   constructor(private userService: UserService) {
     this.getUserProfile();
@@ -31,6 +32,11 @@ export class ProfileComponent implements OnInit {
 
       }
     });
+  }
+
+  editUserProfile() {
+    console.log('editing');
+    
   }
 
   // getMyGames() {
