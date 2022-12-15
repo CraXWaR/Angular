@@ -36,7 +36,7 @@ const updateGame = async (id, data) => {
 
 const getUserGames = async (_id) => {
     try {
-        const result = await Game.find({ owner: _id})
+        const result = await Book.find({ owner: _id})
         return result
     } catch (err) {
         console.error(err)

@@ -32,7 +32,7 @@ router.post('/login', async (req, res) => {
     res.end()
 });
 
-router.post('/profile', async (req, res) => {
+router.post('/profile', (req, res) => {
     const data = req.body;
     const token = jwtDecode(data.token);
     try {

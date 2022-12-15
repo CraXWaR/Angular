@@ -56,16 +56,15 @@ const login = async (username, password) => {
         throw new Error('Invalid email or password!');
     }
 }
-//TODO FIX ADD BUG
-const updateGamesOnUser = async (_id, gameId) => {
+
+const updateGamesOnUser = async (_id, bookId) => {
     try {
         const user = await User.findById(_id);
-        let arrayOfGames = user.createdGames;
-        arrayOfGames.push(gameId);
-        console.log(user);
-        await User.findByIdAndUpdate(_id, { games: arrayOfGames })
+        let array = user.createdGames
+        array.push(bookId)
+        await User.findByIdAndUpdate(_id, { createdGames: array })
     } catch (error) {
-        throw new Error(error);
+        throw new Error(error)
     }
 }
 
