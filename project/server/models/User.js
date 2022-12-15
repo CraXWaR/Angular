@@ -13,23 +13,32 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    fullName: {
+        type: String,
+        required: true,
+    },
     password: {
         type: String,
         required: true,
         minlength: [3, 'Password should have at least 3 characters!'],
     },
-    createdGames: [
-        {
-            type: mongoose.Types.ObjectId,
-            ref: 'Game',
-        }
-    ],
-    wishedGames: [
-        {
-            type: mongoose.Types.ObjectId,
-            ref: 'Game',
-        }
-    ]
+    userInfo: {
+        type: String,
+        minlength: [10, 'Personal information should have at least 10 characters!'],
+        maxlength: [200, 'Personal information cannot have more than 200 characters!'],
+    }
+    // createdGames: [
+    //     {
+    //         type: mongoose.Types.ObjectId,
+    //         ref: 'Game',
+    //     }
+    // ],
+    // wishedGames: [
+    //     {
+    //         type: mongoose.Types.ObjectId,
+    //         ref: 'Game',
+    //     }
+    // ]
 });
 
 userSchema.pre('save', function (next) {

@@ -27,7 +27,7 @@ const createAccessToken = (user) => {
         _id: user._id
     };
 }
-const register = async (username, email, password) => {
+const register = async (username, email, fullName, password, userInfo) => {
     const existingUsername = await User.findOne({ email });
     if (existingUsername) {
         throw new Error('Username is taken!');
@@ -38,7 +38,7 @@ const register = async (username, email, password) => {
         throw new Error('Email is taken!');
     }
 
-    const user = await User.create({ username, email, password });
+    const user = await User.create({ username, email, fullName, password, userInfo });
 
     return createAccessToken(user);
 }

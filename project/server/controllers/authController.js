@@ -6,9 +6,9 @@ const router = require('express').Router();
 
 
 router.post('/register', async (req, res) => {
-    const { username, email, password } = req.body;
+    const { username, email, fullName, password, userInfo } = req.body;
     try {
-        const user = await register(username, email, password);
+        const user = await register(username, email, fullName, password, userInfo);
         res.status(201).json(user);
 
     } catch (error) {
