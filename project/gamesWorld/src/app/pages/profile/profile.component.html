@@ -11,9 +11,14 @@
     <div class="sections-rows">
         <div class="column created">
             <h3>Crated Games</h3>
-            <div>
-                
+            <div *ngIf="!games">
+                No created games yet!
             </div>
+            <ng-container *ngIf="games">
+                <div *ngFor="let game of games">
+                    <p>{{game.title}}</p>
+                </div>
+            </ng-container>
         </div>
         <div class="column ordered">
             <h3>Ordered Games</h3>

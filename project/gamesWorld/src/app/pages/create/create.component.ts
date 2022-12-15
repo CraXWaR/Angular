@@ -22,7 +22,7 @@ export class CreateComponent implements OnInit {
     this.gameSerivce.createGame(value).subscribe({
       next: () => this.router.navigate(['/catalog']),
       error: (err) => {
-        this.errors = err.error.error
+        this.errors = err.error?.error
       }
     })
     console.log(value);

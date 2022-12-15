@@ -28,10 +28,14 @@ export class GameService {
   }
 
   deleteGame(id: string) {
-    return this.http.delete(`${API_URL}/games/${id}`)
+    return this.http.delete(`${API_URL}/games/${id}`);
   }
 
   editGame(id: string | undefined, data: {}){
-    return this.http.put<IGame>(`${API_URL}/games/${id}`, data)
+    return this.http.put<IGame>(`${API_URL}/games/${id}`, data);
+  }
+
+  getProfileGames(token: {}) {
+    return this.http.post<IGame[]>(`${API_URL}/games/mygames`, token);
   }
 }

@@ -3,19 +3,18 @@ const jwtDecode = require('jwt-decode');
 const { updateGamesOnUser } = require('../services/userService');
 
 const router = require('express').Router();
-//TODO 
+
 router.post('/', async (req, res) => {
     const data = req.body;
     const token = jwtDecode(data.token);
     try {
         const userId = token._id;
-        const game = await createGame(data, userId);
-        await updateGamesOnUser(userId, game._id);
-        res.status(201).json(game);
+        const game = await createGame(data, userId)
+        res.status(201).json(game)
     } catch (error) {
         res.status(400).json({ error: error.message })
     }
-});
+})
 
 router.get('/', async (req, res) => {
     const games = await getAllGames();

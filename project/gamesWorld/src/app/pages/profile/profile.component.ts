@@ -17,33 +17,35 @@ export class ProfileComponent implements OnInit {
   constructor(private userService: UserService) {
     this.getUserProfile();
     this.getMyGames();
-   }
-   
-   getUserProfile() {
+  }
+
+  getUserProfile() {
     let token = localStorage.getItem('token');
-    
-    this.userService.getProfile({token}).subscribe({
+
+    this.userService.getProfile({ token }).subscribe({
       next: (user) => {
         this.user = user
       },
       error: (err) => {
         console.log(err);
-        
+
       }
     });
-   }
+  }
 
   getMyGames() {
-    this.userService.getProfileGames().subscribe({
-      next: (v) => {
-        this.games = v
-        if (v.length == 0) {
+    let token = localStorage.getItem('token');
+    
+    this.userService.getProfileGames({ token }).subscribe({
+      next: (value) => {
+        this.games = value
+        if (value.length == 0) {
           this.isEmpty = true;
         }
       },
       error: (err) => {
         console.log(err);
-        
+
       }
     })
   }

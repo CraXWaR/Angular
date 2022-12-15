@@ -42,7 +42,6 @@ export class UserService implements OnDestroy {
   }
 
   isLogged() {
-    //TODO FIX REFRESH BUG!
     if (localStorage.getItem('token')) {
       return true;
     } else {
@@ -54,8 +53,8 @@ export class UserService implements OnDestroy {
     return this.http.post<IUser>(`${API_URL}/profile`, token);
   }
 
-  getProfileGames() {
-    return this.http.get<IGame[]>(`${API_URL}/games/mygames`);
+  getProfileGames(token: {}) {
+    return this.http.get<IGame[]>(`${API_URL}/games/mygames`, token);
   }
 
   ngOnDestroy(): void {
