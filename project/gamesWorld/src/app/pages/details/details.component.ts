@@ -12,6 +12,11 @@ import { IGame } from 'src/app/shared/interfaces/gamgeInterface';
 })
 export class DetailsComponent implements OnInit {
 
+  get isLogged(): boolean {
+    return this.userService.isLogged();
+
+  }
+
   game: IGame | undefined;
   isAuthor: boolean = false;
   inEditMode: boolean = false;

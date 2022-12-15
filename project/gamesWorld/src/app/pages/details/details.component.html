@@ -11,15 +11,15 @@
             <div class="game-price">Price: ${{game?.price}}</div>
         </section>
 
-        <div class="buttons" *ngIf="!isAuthor && !isWished">
+        <div class="buttons" *ngIf="!isAuthor && !isWished && isLogged">
             <button class="btn-wish" (click)="wishGame()">Wish</button>
         </div>
 
-        <div class="wished-game buttons" *ngIf="!isAuthor && isWished">
+        <div class="wished-game buttons" *ngIf="!isAuthor && isWished && isLogged">
             <p>You have already wished this game!</p>
         </div>
 
-        <div class="buttons" *ngIf="isAuthor">
+        <div class="buttons" *ngIf="isAuthor && isLogged">
             <button class="btn-edit" (click)="inEditMode = true">Edit</button>
             <button class="btn-delete" (click)="deleteGame()">Delete</button>
         </div>
