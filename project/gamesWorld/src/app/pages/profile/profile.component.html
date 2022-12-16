@@ -28,19 +28,18 @@
             <h1>Edit profile</h1>
 
             <label for="username"></label>
-            <input type="text" id="username" placeholder="Username" name="username" formControlName="username" ngModel="{{user?.username}}">
-    
+            <input type="text" id="username" name="username" formControlName="username" ngModel="{{user?.username}}">
+
             <label for="email"></label>
-            <input type="email" id="email" placeholder="Email@abv.bg" name="email" formControlName="email" ngModel="{{user?.email}}">
-    
+            <input type="email" id="email" name="email" formControlName="email" ngModel="{{user?.email}}">
+
             <label for="fullName"></label>
-            <input type="text" id="fullName" placeholder="Hasan Hasanov" name="fullName" formControlName="fullName" ngModel="{{user?.fullName}}">
-    
+            <input type="text" id="fullName" name="fullName" formControlName="fullName" ngModel="{{user?.fullName}}">
+
             <label for="userInfo"></label>
-            <textarea type="text" id="userInfo" placeholder="I'm good guy who loves computer games..." name="userInfo"
-                formControlName="userInfo" ngModel="{{user?.userInfo}}">
+            <textarea type="text" id="userInfo" name="userInfo" formControlName="userInfo" ngModel="{{user?.userInfo}}">
             </textarea>
-    
+
             <div>
                 <button class="button-edit">Update profile</button>
             </div>

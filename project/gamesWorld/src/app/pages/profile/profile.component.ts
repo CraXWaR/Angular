@@ -42,7 +42,14 @@ export class ProfileComponent implements OnInit {
   }
 
   onEditUser() {
-    this.userService.editUser(this.form.value).subscribe({
+
+    const id = this.user?._id;
+
+    let token = localStorage.getItem('token');
+    let value = this.form.value;
+    value.token = token;
+    
+    this.userService.editUser(id, value).subscribe({
       next: (user) => {
         this.user = user;
         this.inEditMode = false;

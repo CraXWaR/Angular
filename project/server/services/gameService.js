@@ -28,9 +28,9 @@ const deleteGame = async (id) => {
 
 const updateGame = async (id, data) => {
     try {
-        return await Game.findByIdAndUpdate(id, { ...data }, { runValidators: true })
+        return await Game.findByIdAndUpdate(id, { ...data }, { runValidators: true });
     } catch (error) {
-        return error
+        return error;
     }
 }
 

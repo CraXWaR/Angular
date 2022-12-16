@@ -6,6 +6,4 @@ export interface IUser {
     fullName: string,
     userInfo: string,
     password: string,
-    // createdGames: string[],
-    // orderedGames: string[]
 }

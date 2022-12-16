@@ -1,5 +1,5 @@
 const User = require('../models/User');
-const { register, login } = require('../services/userService');
+const { register, login, updateUser } = require('../services/userService');
 const jwtDecode = require('jwt-decode');
 
 const router = require('express').Router();
@@ -49,7 +49,18 @@ router.post('/profile', (req, res) => {
     }
 });
 
-
+router.put('/profile/:id', async (req, res) => {
+    const data = req.body;
+    
+    try {
+        const token = jwtDecode(data.token);
+        const userId = token._id;
+        await updateUser(userId, data);
+        res.status(200).json(data);
+    } catch (error) {
+        res.status(400).json({ error: error.message });
+    }
+})
 
 router.get('/logout', (req, res) => {
     res.status(204).end();

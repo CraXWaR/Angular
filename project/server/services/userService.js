@@ -63,7 +63,7 @@ const login = async (username, password) => {
 
 const updateUser = async (id, data) => {
     try {
-        return await User.findByIdAndUpdate(id, { ...data }, { runValidators: true })
+        return await User.findByIdAndUpdate(id, { ...data }, { runValidators: true });
     } catch (error) {
         return error;
     }

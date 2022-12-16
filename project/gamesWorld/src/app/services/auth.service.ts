@@ -53,8 +53,8 @@ export class UserService implements OnDestroy {
     return this.http.post<IUser>(`${API_URL}/profile`, token);
   }
 
-  editUser(data: {}) {
-    return this.http.put<IUser>(`${API_URL}/profile`, data)
+  editUser(id: string | undefined, data: {}) {
+    return this.http.put<IUser>(`${API_URL}/profile/${id}`, data)
   }
 
   ngOnDestroy(): void {
