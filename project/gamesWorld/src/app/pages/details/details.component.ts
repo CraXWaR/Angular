@@ -3,6 +3,7 @@ import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from 'src/app/services/auth.service';
 import { GameService } from 'src/app/services/game.service';
+import { errHandler } from 'src/app/shared/errHandler';
 import { IGame } from 'src/app/shared/interfaces/gamgeInterface';
 
 @Component({
@@ -77,7 +78,7 @@ export class DetailsComponent implements OnInit {
         this.inEditMode = false;
       },
       error: (err) => {
-        this.errors = err.error?.error
+        this.errors = errHandler(err.error?.error);
       }
     })
   }

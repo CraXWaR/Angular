@@ -4,7 +4,8 @@
         <p class="info">Join the creators.</p>
 
         <label for="gameName"></label>
-        <input type="text" id="title" placeholder="World of Warcraft" name="title" #title="ngModel" ngModel minlength="3" required>
+        <input type="text" id="title" placeholder="World of Warcraft" name="title" #title="ngModel" ngModel
+            minlength="3" required>
         <ng-container *ngIf="title.touched">
             <p class="error" *ngIf="title.errors?.['required']">Title is required!</p>
             <p class="error" *ngIf="title.errors?.['minlength']">You should have at least 3 characters!</p>
@@ -24,7 +25,8 @@
         </ng-container>
 
         <label for="imageUrl"></label>
-        <input type="text" id="imageUrl" placeholder="https://..." name="imageUrl" #imageUrl="ngModel" ngModel pattern="^https?://.+" required>
+        <input type="text" id="imageUrl" placeholder="https://..." name="imageUrl" #imageUrl="ngModel" ngModel
+            pattern="^https?://.+" required>
         <ng-container *ngIf="imageUrl.touched">
             <p class="error" *ngIf="imageUrl.errors?.['required']">ImageUrl is required!</p>
             <p class="error" *ngIf="imageUrl.errors?.['pattern']">You must give a URL!</p>
@@ -33,12 +35,15 @@
         <label for="gameDescription"></label>
         <textarea id="gameDescription"
             placeholder="World of Warcraft (WoW) is a massively multiplayer online role-playing game (MMORPG) released in 2004 by Blizzard Entertainment."
-            name="description" cols="30" rows="10" #description="ngModel" ngModel minlength="10" maxlength="10000"></textarea>
-            <ng-container *ngIf="description.touched">
-                <p class="error" *ngIf="description.errors?.['required']">Description is required!</p>
-                <p class="error" *ngIf="description.errors?.['minlength']">Description should have at least 10 characters!</p>
-                <p class="error" *ngIf="description.errors?.['maxlength']">Description shouldn't have more than 10000 characters!</p>
-            </ng-container>
+            name="description" cols="30" rows="10" #description="ngModel" ngModel minlength="10"
+            maxlength="10000"></textarea>
+        <ng-container *ngIf="description.touched">
+            <p class="error" *ngIf="description.errors?.['required']">Description is required!</p>
+            <p class="error" *ngIf="description.errors?.['minlength']">Description should have at least 10 characters!
+            </p>
+            <p class="error" *ngIf="description.errors?.['maxlength']">Description shouldn't have more than 10000
+                characters!</p>
+        </ng-container>
 
         <div>
             <button class="btn-create">Create game</button>
