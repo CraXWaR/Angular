@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { errHandler } from 'src/app/shared/errHandler';
 import { emailValidator, passwordValidator } from 'src/app/shared/validators/validators';
 
 import { UserService } from '../../services/auth.service';
@@ -29,7 +30,7 @@ export class RegisterComponent implements OnInit {
     this.userService.register(this.form.value).subscribe({
       next: () => this.router.navigate(['/']),
       error: (err) => {
-        this.errors = err.error?.error
+        this.errors = errHandler(err.error?.error);
       }
     })
   }

@@ -1,34 +1,68 @@
 <section class="register-container">
     <form [formGroup]="form" class="register-form" (ngSubmit)="onRegister()">
         <h1>Register</h1>
-        <p>Join us and find the best game for you.</p>
+        <p class="invite">Join us and find the best game for you.</p>
         <label for="username"></label>
         <input type="text" id="username" placeholder="Username" name="username" formControlName="username">
+        <ng-container *ngIf="form.get('username')?.touched">
+            <p class="error" *ngIf="form.get('username')?.errors?.['required']">Username is required!</p>
+            <p class="error" *ngIf="form.get('username')?.errors?.['minlength']">Username should have 4 characters!</p>
+            <p class="error" *ngIf="form.get('username')?.errors?.['maxlength']">Username shouldn't have more than 10
+                characters!</p>
+        </ng-container>
 
         <label for="email"></label>
         <input type="email" id="email" placeholder="Email@abv.bg" name="email" formControlName="email">
+        <ng-container *ngIf="form.get('email')?.touched">
+            <p class="error" *ngIf="form.get('email')?.errors?.['required']">Email is required!</p>
+            <p class="error" *ngIf="form.get('email')?.errors?.['invalidEmail']">Email should be valid!</p>
+        </ng-container>
 
         <label for="fullName"></label>
         <input type="text" id="fullName" placeholder="Hasan Hasanov" name="fullName" formControlName="fullName">
+        <ng-container *ngIf="form.get('fullName')?.touched">
+            <p class="error" *ngIf="form.get('fullName')?.errors?.['required']">Full name is required!</p>
+            <p class="error" *ngIf="form.get('fullName')?.errors?.['minlength']">Full name should have 10 characters!
+            </p>
+            <p class="error" *ngIf="form.get('fullName')?.errors?.['maxlength']">Full name shouldn't have more than 30
+                characters!</p>
+        </ng-container>
 
         <label for="userInfo"></label>
         <textarea type="text" id="userInfo" placeholder="I'm good guy who loves computer games..." name="userInfo"
             formControlName="userInfo">
         </textarea>
+        <ng-container *ngIf="form.get('userInfo')?.touched">
+            <p class="error" *ngIf="form.get('userInfo')?.errors?.['minlength']">User information should have 10
+                characters!</p>
+            <p class="error" *ngIf="form.get('userInfo')?.errors?.['maxlength']">User information shouldn't have more
+                than 10000 characters!</p>
+        </ng-container>
 
         <label for="password"></label>
         <input type="password" id="password" placeholder="Password" name="password" formControlName="password">
+        <ng-container *ngIf="form.get('password')?.touched">
+            <p class="error" *ngIf="form.get('password')?.errors?.['required']">Password is required!</p>
+            <p class="error" *ngIf="form.get('password')?.errors?.['minlength']">Password should have more than 3
+                characters!</p>
+            <p class="error" *ngIf="form.get('password')?.errors?.['maxlength']">Password should have less 20
+                characters!</p>
+        </ng-container>
 
         <label for="repeat-password"></label>
         <input type="password" id="repeat-password" placeholder="Repeat Password" name="rePassword"
             formControlName="rePassword">
+        <ng-container *ngIf="form.get('rePassword')?.touched">
+            <p class="error" *ngIf="form.get('rePassword')?.errors?.['required']">Repeat-password is required!</p>
+            <p class="error" *ngIf="form.get('rePassword')?.errors?.['invalidPasswords']">Passwords must be equal!</p>
+        </ng-container>
 
         <div>
             <button class="btn-register">Create an account</button>
         </div>
 
         <div>
-            <p>Already have an account? <a href="/login">Login</a></p>
+            <p class="invite">Already have an account? <a href="/login">Login</a></p>
         </div>
     </form>
 </section>
