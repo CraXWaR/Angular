@@ -28,17 +28,48 @@
             <h1>Edit profile</h1>
 
             <label for="username"></label>
-            <input type="text" id="username" name="username" formControlName="username" ngModel="{{user?.username}}">
+            <input type="text" id="username" placeholder="Username" name="username" formControlName="username" required
+                minlength="4" maxlength="10" ngModel="{{user?.username}}">
+            <ng-container *ngIf="form.get('username')?.touched">
+                <p class="error" *ngIf="form.get('username')?.errors?.['required']">Username is required!</p>
+                <p class="error" *ngIf="form.get('username')?.errors?.['minlength']">Username should have 4 characters!
+                </p>
+                <p class="error" *ngIf="form.get('username')?.errors?.['maxlength']">Username shouldn't have more than
+                    10
+                    characters!</p>
+            </ng-container>
 
             <label for="email"></label>
-            <input type="email" id="email" name="email" formControlName="email" ngModel="{{user?.email}}">
+            <input type="email" id="email" placeholder="Email@abv.bg" name="email" formControlName="email" ngModel="{{user?.email}}" pattern="^[a-zA-Z0-9\.-]{4,}@[a-z]+\.[a-z]+$">
+            <ng-container *ngIf="form.get('email')?.touched">
+                <p class="error" *ngIf="form.get('email')?.errors?.['required']">Email is required!</p>
+                <p class="error" *ngIf="form.get('email')?.errors?.['invalidEmail']">Email should be valid!</p>
+            </ng-container>
 
             <label for="fullName"></label>
-            <input type="text" id="fullName" name="fullName" formControlName="fullName" ngModel="{{user?.fullName}}">
+            <input type="text" id="fullName" placeholder="Hasan Hasanov" name="fullName" formControlName="fullName"
+                required minlength="10" maxlength="30" ngModel="{{user?.fullName}}">
+            <ng-container *ngIf="form.get('fullName')?.touched">
+                <p class="error" *ngIf="form.get('fullName')?.errors?.['required']">Full name is required!</p>
+                <p class="error" *ngIf="form.get('fullName')?.errors?.['minlength']">Full name should have 10
+                    characters!
+                </p>
+                <p class="error" *ngIf="form.get('fullName')?.errors?.['maxlength']">Full name shouldn't have more than
+                    30
+                    characters!</p>
+            </ng-container>
 
             <label for="userInfo"></label>
-            <textarea type="text" id="userInfo" name="userInfo" formControlName="userInfo" ngModel="{{user?.userInfo}}">
-            </textarea>
+            <textarea type="text" id="userInfo" placeholder="I'm good guy who loves computer games..." name="userInfo"
+                formControlName="userInfo" minlength="10" maxlength="10000" ngModel="{{user?.userInfo}}">
+        </textarea>
+            <ng-container *ngIf="form.get('userInfo')?.touched">
+                <p class="error" *ngIf="form.get('userInfo')?.errors?.['minlength']">User information should have 10
+                    characters!</p>
+                <p class="error" *ngIf="form.get('userInfo')?.errors?.['maxlength']">User information shouldn't have
+                    more
+                    than 10000 characters!</p>
+            </ng-container>
 
             <div>
                 <button class="button-edit">Update profile</button>

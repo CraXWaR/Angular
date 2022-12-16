@@ -3,7 +3,7 @@
         <h1>Register</h1>
         <p class="invite">Join us and find the best game for you.</p>
         <label for="username"></label>
-        <input type="text" id="username" placeholder="Username" name="username" formControlName="username">
+        <input type="text" id="username" placeholder="Username" name="username" formControlName="username" required minlength="4" maxlength="10">
         <ng-container *ngIf="form.get('username')?.touched">
             <p class="error" *ngIf="form.get('username')?.errors?.['required']">Username is required!</p>
             <p class="error" *ngIf="form.get('username')?.errors?.['minlength']">Username should have 4 characters!</p>
@@ -12,14 +12,14 @@
         </ng-container>
 
         <label for="email"></label>
-        <input type="email" id="email" placeholder="Email@abv.bg" name="email" formControlName="email">
+        <input type="email" id="email" placeholder="Email@abv.bg" name="email" formControlName="email" required pattern="^[a-zA-Z0-9\.-]{4,}@[a-z]+\.[a-z]+$">
         <ng-container *ngIf="form.get('email')?.touched">
             <p class="error" *ngIf="form.get('email')?.errors?.['required']">Email is required!</p>
             <p class="error" *ngIf="form.get('email')?.errors?.['invalidEmail']">Email should be valid!</p>
         </ng-container>
 
         <label for="fullName"></label>
-        <input type="text" id="fullName" placeholder="Hasan Hasanov" name="fullName" formControlName="fullName">
+        <input type="text" id="fullName" placeholder="Hasan Hasanov" name="fullName" formControlName="fullName" required minlength="10" maxlength="30">
         <ng-container *ngIf="form.get('fullName')?.touched">
             <p class="error" *ngIf="form.get('fullName')?.errors?.['required']">Full name is required!</p>
             <p class="error" *ngIf="form.get('fullName')?.errors?.['minlength']">Full name should have 10 characters!
@@ -30,7 +30,7 @@
 
         <label for="userInfo"></label>
         <textarea type="text" id="userInfo" placeholder="I'm good guy who loves computer games..." name="userInfo"
-            formControlName="userInfo">
+            formControlName="userInfo" minlength="10" maxlength="10000">
         </textarea>
         <ng-container *ngIf="form.get('userInfo')?.touched">
             <p class="error" *ngIf="form.get('userInfo')?.errors?.['minlength']">User information should have 10
@@ -40,7 +40,7 @@
         </ng-container>
 
         <label for="password"></label>
-        <input type="password" id="password" placeholder="Password" name="password" formControlName="password">
+        <input type="password" id="password" placeholder="Password" name="password" formControlName="password" required minlength="3" maxlength="20">
         <ng-container *ngIf="form.get('password')?.touched">
             <p class="error" *ngIf="form.get('password')?.errors?.['required']">Password is required!</p>
             <p class="error" *ngIf="form.get('password')?.errors?.['minlength']">Password should have more than 3

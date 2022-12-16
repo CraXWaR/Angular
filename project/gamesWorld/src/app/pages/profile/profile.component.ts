@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserService } from 'src/app/services/auth.service';
+import { errHandler } from 'src/app/shared/errHandler';
 import { IUser } from 'src/app/shared/interfaces/userInterface';
 import { emailValidator } from 'src/app/shared/validators/validators';
 
@@ -48,17 +49,17 @@ export class ProfileComponent implements OnInit {
     let token = localStorage.getItem('token');
     let value = this.form.value;
     value.token = token;
-    
+
     this.userService.editUser(id, value).subscribe({
       next: (user) => {
         this.user = user;
         this.inEditMode = false;
       },
       error: (err) => {
-        this.errors = err.error?.error;
+        this.errors = errHandler(err.error?.error);
       }
     })
-    
+
   }
 
   ngOnInit(): void {
