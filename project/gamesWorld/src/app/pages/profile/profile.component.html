@@ -1,21 +1,49 @@
-<div class="profile-container">
-    <div class="profile-img">
-        <img src="../../../assets/img/images.png" alt="Profile picture" width="200px" height="200px">
+<ng-container *ngIf="!inEditMode">
+    <div class="profile-container">
+        <div class="profile-img">
+            <img src="../../../assets/img/images.png" alt="Profile picture" width="200px" height="200px">
+        </div>
+        <div class="username">
+            <h2>Username: {{user?.username}}</h2>
+        </div>
+        <div class="email">
+            <h3>Email: {{user?.email}}</h3>
+        </div>
+        <div class="fullName">
+            Full Name: {{user?.fullName}}
+        </div>
+        <div class="userInfo">
+            <h4>User information:</h4>
+            <p class="information">{{user?.userInfo}}</p>
+        </div>
+        <div class="buttons">
+            <button class="btn-edit" (click)="inEditMode = true">Edit</button>
+        </div>
     </div>
-    <div class="username">
-        <h2>Username: {{user?.username}}</h2>
-    </div>
-    <div class="email">
-        <h3>Email: {{user?.email}}</h3>
-    </div>
-    <div class="fullName">
-        Full Name: {{user?.fullName}}
-    </div>
-    <div class="userInfo">
-        <h4>User information:</h4>
-        <p class="information">{{user?.userInfo}}</p>
-    </div>
-    <div class="buttons">
-        <button class="btn-edit" (click)="editUserProfile()">Edit</button>
-    </div>
-</div>
+</ng-container>
+
+<ng-container *ngIf="inEditMode">
+    <section class="edit-container">
+        <form class="edit-form" [formGroup]="form" (ngSubmit)="onEditUser()">
+            <h1>Edit profile</h1>
+
+            <label for="username"></label>
+            <input type="text" id="username" placeholder="Username" name="username" formControlName="username" ngModel="{{user?.username}}">
+    
+            <label for="email"></label>
+            <input type="email" id="email" placeholder="Email@abv.bg" name="email" formControlName="email" ngModel="{{user?.email}}">
+    
+            <label for="fullName"></label>
+            <input type="text" id="fullName" placeholder="Hasan Hasanov" name="fullName" formControlName="fullName" ngModel="{{user?.fullName}}">
+    
+            <label for="userInfo"></label>
+            <textarea type="text" id="userInfo" placeholder="I'm good guy who loves computer games..." name="userInfo"
+                formControlName="userInfo" ngModel="{{user?.userInfo}}">
+            </textarea>
+    
+            <div>
+                <button class="button-edit">Update profile</button>
+            </div>
+        </form>
+    </section>
+</ng-container>
