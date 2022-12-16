@@ -12,8 +12,12 @@
             <button class="btn-login">Login</button>
         </div>
 
+        <ng-container *ngIf="errors">
+            <p class="error">{{errors}}</p>
+        </ng-container>
+
         <div>
-            <p>Don't have an account yet? <a href="/register">Register</a></p>
+            <p class="info">Don't have an account yet? <a href="/register">Register</a></p>
         </div>
     </form>
 </section>

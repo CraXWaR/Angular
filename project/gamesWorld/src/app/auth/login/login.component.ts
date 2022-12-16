@@ -1,6 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
+import { errHandler } from 'src/app/shared/errHandler';
 import { UserService } from '../../services/auth.service';
 
 @Component({
@@ -18,7 +19,7 @@ export class LoginComponent implements OnInit {
     this.userService.login(form.value).subscribe({
       next: () => this.router.navigate(['/']),
       error: (err) => {
-        this.errors = err.error.error
+        this.errors = errHandler(err.error?.error);
       }
     })
   }

@@ -46,21 +46,11 @@
     outline: none;
 }
 
-/* .login-container input[type="submit"] {
-    width: 320px;
-    height: 35px;
-    margin-top: 30px;
-    border: none;
-    background-color: black;
-    color: white;
-    font-size: 15px;
-} */
-
-.login-container p {
+.info {
     font-size: 20px;
     text-align: center;
     padding-bottom: 20px;
-    margin-left: 15px;
+    margin-left: 20px;
 }
 
 .login-container p>a {
@@ -81,4 +71,11 @@
     background-color: #1c1c1c;
     color: #9b9b9b;
     font-size: 17px;
+}
+
+.error {
+    color: red;
+    margin-left: 20px;
+    text-align: center;
+    font-size: 15px;
 }
