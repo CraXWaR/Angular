@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { GameService } from 'src/app/services/game.service';
+import { errHandler } from 'src/app/shared/errHandler';
 
 @Component({
   selector: 'app-create',
@@ -22,7 +23,7 @@ export class CreateComponent implements OnInit {
     this.gameSerivce.createGame(value).subscribe({
       next: () => this.router.navigate(['/catalog']),
       error: (err) => {
-        this.errors = err.error?.error
+        this.errors = errHandler(err?.error?.error);
       }
     })
     console.log(value);

@@ -1,7 +1,7 @@
 .create-container {
     color: #9b9b9b;
     width: 360px;
-    height: 700px;
+    height: fit-content;
     margin: auto;
     margin-top: 4%;
     background-color: #0f0f0f;
@@ -62,25 +62,11 @@
     resize: none;
 }
 
-/* .register-container input[type="submit"] {
-    width: 320px;
-    height: 35px;
-    margin-top: 30px;
-    border: none;
-    background-color: black;
-    color: white;
-    font-size: 15px;
-} */
-
-.create-container p {
+.info {
     font-size: 20px;
     text-align: center;
     padding-bottom: 20px;
     margin-left: 15px;
-}
-
-.create-container p>a {
-    color: #9b9b9b;
 }
 
 .btn-create {
@@ -89,6 +75,7 @@
     height: 35px;
     margin-top: 30px;
     margin-left: 60px;
+    margin-bottom: 30px;
     padding-left: 10px;
     padding-top: 12px;
     padding-bottom: 30px;
@@ -98,4 +85,9 @@
     color: #9b9b9b;
     font-size: 17px;
     
+}
+
+.error {
+    color: red;
+    font-size: 15px;
 }
