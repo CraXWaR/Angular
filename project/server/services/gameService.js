@@ -34,20 +34,10 @@ const updateGame = async (id, data) => {
     }
 }
 
-const getUserGames = async (_id) => {
-    try {
-        const result = await Book.find({ owner: _id})
-        return result
-    } catch (err) {
-        console.error(err)
-    }
-}
-
 module.exports = {
     createGame,
     getAllGames,
     getOneGame,
     deleteGame,
-    updateGame,
-    getUserGames
+    updateGame
 }

@@ -35,7 +35,7 @@ router.post('/login', async (req, res) => {
 router.post('/profile', (req, res) => {
     const data = req.body;
     const token = jwtDecode(data.token);
-    console.log(token);
+    
     try {
         const username = token.username;
         const email = token.email;
@@ -45,7 +45,7 @@ router.post('/profile', (req, res) => {
         res.status(200).json({ "username": username, "email": email, "fullName": fullName, "userInfo": userInfo });
         res.end();
     } catch (error) {
-        console.log(error);
+        res.status(400).json({ error: error.message });
     }
 });
 

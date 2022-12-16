@@ -65,7 +65,7 @@ const updateUser = async (id, data) => {
     try {
         return await User.findByIdAndUpdate(id, { ...data }, { runValidators: true })
     } catch (error) {
-        return error
+        return error;
     }
 }
 

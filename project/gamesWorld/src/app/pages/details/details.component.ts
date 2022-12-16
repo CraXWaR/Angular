@@ -21,7 +21,9 @@ export class DetailsComponent implements OnInit {
   isAuthor: boolean = false;
   inEditMode: boolean = false;
   isWished: boolean = false;
-  token: string | null = localStorage.getItem('token')
+  token: string | null = localStorage.getItem('token');
+  errors: string | undefined = undefined;
+
 
   constructor(private gameService: GameService, private authService: UserService, private activatedRoute: ActivatedRoute, private userService: UserService, private router: Router) {
     this.getGame();
@@ -75,8 +77,7 @@ export class DetailsComponent implements OnInit {
         this.inEditMode = false;
       },
       error: (err) => {
-        // this.errors = err.error?.error
-        console.log(err)
+        this.errors = err.error?.error
       }
     })
   }

@@ -9,10 +9,10 @@ router.post('/', async (req, res) => {
     const token = jwtDecode(data.token);
     try {
         const userId = token._id;
-        const game = await createGame(data, userId)
-        res.status(201).json(game)
+        const game = await createGame(data, userId);
+        res.status(201).json(game);
     } catch (error) {
-        res.status(400).json({ error: error.message })
+        res.status(400).json({ error: error.message });
     }
 })
 
@@ -30,7 +30,7 @@ router.get('/:id', async (req, res) => {
 
 router.delete('/:id', async (req, res) => {
     await deleteGame(req.params.id);
-    res.status(200).json('Game deleted!')
+    res.status(200).json('Game deleted!');
 });
 
 router.put('/:id', async (req, res) => {
@@ -42,16 +42,14 @@ router.put('/:id', async (req, res) => {
         const token = jwtDecode(data.token);
         const userId = token._id;
         if (userId == game.owner._id) {
-            await updateGame(id, data)
-            const updatedGame = await getOneGame(id)
-            res.status(200).json(updatedGame)
+            await updateGame(id, data);
+            const updatedGame = await getOneGame(id);
+            res.status(200).json(updatedGame);
         } else {
-            throw new Error('You are not the owner!')
+            throw new Error('You are not the owner!');
         }
     } catch (error) {
-        console.log(data);
-
-        res.status(400).json({ error: error.message })
+        res.status(400).json({ error: error.message });
     }
 });
 
