@@ -83,10 +83,10 @@ export class DetailsComponent implements OnInit {
     })
   }
 
-  wishGame() {
-    console.log('wished');
-    this.isWished = true
-  }
+  // wishGame() {
+  //   console.log('wished');
+  //   this.isWished = true
+  // }
 
   ngOnInit(): void {
   }

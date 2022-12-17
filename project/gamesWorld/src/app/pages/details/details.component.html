@@ -11,8 +11,8 @@
             <div class="game-price">Price: ${{game?.price}}</div>
         </section>
 
-        <div class="buttons" *ngIf="!isAuthor && !isWished && isLogged">
-            <button class="btn-wish" (click)="wishGame()">Wish</button>
+        <div class="buttons" *ngIf="!isAuthor && isLogged">
+            <button class="btn-wish">Wish</button>
         </div>
 
         <div class="wished-game buttons" *ngIf="!isAuthor && isWished && isLogged">
