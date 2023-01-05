@@ -34,8 +34,4 @@ export class GameService {
   editGame(id: string | undefined, data: {}){
     return this.http.put<IGame>(`${API_URL}/games/${id}`, data);
   }
-
-  getProfileGames(token: {}) {
-    return this.http.post<IGame[]>(`${API_URL}/games/mygames`, token);
-  }
 }

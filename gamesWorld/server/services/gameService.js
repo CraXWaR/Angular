@@ -5,7 +5,7 @@ const createGame = async (game, id) => {
         game.owner = id;
         return await Game.create({ ...game })
     } catch (error) {
-        throw new Error(error)
+        throw new Error(error);
     }
 };
 
@@ -30,7 +30,7 @@ const updateGame = async (id, data) => {
     try {
         return await Game.findByIdAndUpdate(id, { ...data }, { runValidators: true });
     } catch (error) {
-        return error;
+        throw new Error(error);
     }
 }
 
